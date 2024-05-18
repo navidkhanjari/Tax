@@ -1,9 +1,13 @@
-﻿namespace DataLayer.Entities.FAQ
+﻿namespace CoreLayer.DTOs.FAQs
 {
-	public class FAQs : Entity
+	public class CreateFAQDTO
 	{
 		public string Question { get; set; }
 		public string Answer { get; set; }
 		public bool Visible { get; set; }
+	}
+	public enum CreateFAQResult
+	{
+		Success, Error
 	}
 }

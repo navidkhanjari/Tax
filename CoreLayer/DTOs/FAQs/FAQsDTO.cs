@@ -1,7 +1,8 @@
-﻿namespace DataLayer.Entities.FAQ
+﻿namespace CoreLayer.DTOs.FAQs
 {
-	public class FAQs : Entity
+	public class FAQsDTO
 	{
+		public int Id { get; set; }
 		public string Question { get; set; }
 		public string Answer { get; set; }
 		public bool Visible { get; set; }
