@@ -14,7 +14,7 @@
 		public string MetaDescription { get; set; }
 		public string Canonical { get; set; }
 	}
-	public enum UpdatepostResult
+	public enum UpdatePostResult
 	{
 		Success, Error,
 	}
