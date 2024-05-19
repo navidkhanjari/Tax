@@ -31,7 +31,9 @@ namespace CoreLayer.Services.Implementation
 
 				if (AboutUs != null)
 				{
-					AboutUsDTO aboutUsDTO = _Mapper.Map<AboutUsDTO>(AboutUs);
+					AboutUsDTO AboutUsDTO = _Mapper.Map<AboutUsDTO>(AboutUs);
+
+					return AboutUsDTO;
 				}
 
 				return null;
@@ -63,6 +65,7 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
+
 		#region (Update)
 		public async Task<bool> Update(AboutUs AboutUs)
 		{
@@ -81,12 +84,15 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
+
 		#region (Update About Us)
 		public async Task<UpdateAboutUsResult> UpdateAboutUs(UpdateAboutUsDTO UpdateAboutUsDTO)
 		{
 			try
 			{
-				AboutUs AboutUs = _Mapper.Map<AboutUs>(UpdateAboutUsDTO);
+				AboutUs AboutUs = await GetAboutUsById(UpdateAboutUsDTO.Id);
+
+				_Mapper.Map(UpdateAboutUsDTO, AboutUs);
 
 				if (UpdateAboutUsDTO.Image != null)
 				{

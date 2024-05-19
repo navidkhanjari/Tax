@@ -12,7 +12,7 @@ namespace CoreLayer.Services.Interfaces
 		Task<bool> Update(Slider Slider);
 		Task<bool> Delete(Slider Slider);
 
-		Task<CreateSliderDTO> CreateSlider(CreateSliderDTO CreateSliderDTO);
-		Task<UpdateSliderDTO> UpdateSlider(UpdateSliderDTO UpdateSliderDTO);
+		Task<CreateSliderResult> CreateSlider(CreateSliderDTO CreateSliderDTO);
+		Task<UpdateSliderResult> UpdateSlider(UpdateSliderDTO UpdateSliderDTO);
 	}
 }

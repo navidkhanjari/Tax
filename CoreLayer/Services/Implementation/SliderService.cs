@@ -1,35 +1,42 @@
 ﻿using AutoMapper;
-using CoreLayer.DTOs.Comments;
+using CoreLayer.DTOs.Sliders;
 using CoreLayer.Services.Interfaces;
 using CoreLayer.Software;
 using CoreLayer.Utilities;
-using DataLayer.Entities.Comments;
+using DataLayer.Entities.Sliders;
 using Microsoft.EntityFrameworkCore;
 using NakShop.Data.Context;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CoreLayer.Services.Implementation
 {
-	public class CommentService : ICommentService
+	public class SliderService : ISliderService
 	{
 		#region (Dependency Injection)
 		private readonly ApplicationContext _Context;
 		private readonly IMapper _Mapper;
-		public CommentService(ApplicationContext Context, IMapper Mapper)
+		public SliderService(ApplicationContext Context, IMapper Mapper)
 		{
 			this._Context = Context;
 			this._Mapper = Mapper;
 		}
 		#endregion
 
-		#region (Get Comment By Id)
-		public async Task<Comment> GetCommentById(int Id)
+		#region (Get Sliders)
+		public async Task<List<SliderDTO>> GetSliders()
 		{
 			try
 			{
-				Comment Comment = await _Context.Comments.SingleOrDefaultAsync(C => C.Id == Id);
+				List<Slider> Sliders = await _Context.Sliders.ToListAsync();
 
-				return Comment;
+				List<SliderDTO> SliderDTOs = _Mapper.Map<List<Slider>, List<SliderDTO>>(Sliders);
+
+				return SliderDTOs;
 			}
 			catch (Exception Exception)
 			{
@@ -40,16 +47,14 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
-		#region (Get Comments)
-		public async Task<List<CommentsDTO>> GetComments()
+		#region (Get Slider By Id)
+		public async Task<Slider> GetSliderById(int Id)
 		{
 			try
 			{
-				List<Comment> Comments = await _Context.Comments.ToListAsync();
+				Slider Slider = await _Context.Sliders.SingleOrDefaultAsync(S => S.Id == Id);
 
-				List<CommentsDTO> CommentsDTOs = _Mapper.Map<List<Comment>, List<CommentsDTO>>(Comments);
-
-				return CommentsDTOs;
+				return Slider;
 			}
 			catch (Exception Exception)
 			{
@@ -60,14 +65,12 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
-
-		#region(Add)
-		public async Task<bool> Add(Comment Comment)
+		#region (Add)
+		public async Task<bool> Add(Slider Slider)
 		{
 			try
 			{
-				await _Context.Comments.AddAsync(Comment);
-
+				await _Context.Sliders.AddAsync(Slider);
 				await _Context.SaveChangesAsync();
 
 				return true;
@@ -82,11 +85,11 @@ namespace CoreLayer.Services.Implementation
 		#endregion
 
 		#region (Update)
-		public async Task<bool> Update(Comment Comment)
+		public async Task<bool> Update(Slider Slider)
 		{
 			try
 			{
-				_Context.Comments.Update(Comment);
+				_Context.Sliders.Update(Slider);
 				await _Context.SaveChangesAsync();
 
 				return true;
@@ -101,11 +104,11 @@ namespace CoreLayer.Services.Implementation
 		#endregion
 
 		#region (Delete)
-		public async Task<bool> Delete(Comment Comment)
+		public async Task<bool> Delete(Slider Slider)
 		{
 			try
 			{
-				_Context.Comments.Remove(Comment);
+				_Context.Sliders.Remove(Slider);
 				await _Context.SaveChangesAsync();
 
 				return true;
@@ -119,59 +122,56 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
-
-		#region (Create Comment)
-		public async Task<CreateCommentResult> CreateComment(CreateCommentDTO CreateCommentDTO)
+		#region (Create Slider)
+		public async Task<CreateSliderResult> CreateSlider(CreateSliderDTO CreateSliderDTO)
 		{
 			try
 			{
-				Comment Comment = _Mapper.Map<Comment>(CreateCommentDTO);
+				Slider Slider = _Mapper.Map<Slider>(CreateSliderDTO);
 
-				string ImageName = CreateCommentDTO.CustomerImage.SaveFileAndReturnName(FilePath.CommentImageUploadPath);
+				string ImageName = CreateSliderDTO.Image.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
 
-				Comment.CustomerImageName = ImageName;
+				Slider.ImageName = ImageName;
 
-				await Add(Comment);
+				await Add(Slider);
 
-				return CreateCommentResult.Success;
+				return CreateSliderResult.Success;
 			}
 			catch (Exception Exception)
 			{
 				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return CreateCommentResult.Error;
+				return CreateSliderResult.Error;
 			}
 		}
 		#endregion
 
-		#region (Update Comment)
-		public async Task<UpdateCommentResult> UpdateComment(UpdateCommentDTO UpdateCommentDTO)
+		#region (Update Slider)
+		public async Task<UpdateSliderResult> UpdateSlider(UpdateSliderDTO UpdateSliderDTO)
 		{
 			try
 			{
-				Comment Comment = await GetCommentById(UpdateCommentDTO.Id);
+				Slider Slider = await GetSliderById(UpdateSliderDTO.Id);
 
-				// Update Comment DTO Map To Exist Comment
-				_Mapper.Map(UpdateCommentDTO, Comment);
+				_Mapper.Map(UpdateSliderDTO, Slider);
 
-				if (UpdateCommentDTO.CustomerImage != null)
+				if (UpdateSliderDTO.Image != null)
 				{
 					// delete old image
+					string ImageName = UpdateSliderDTO.Image.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
 
-					string ImageName = UpdateCommentDTO.CustomerImage.SaveFileAndReturnName(FilePath.CommentImageUploadPath);
-
-					Comment.CustomerImageName = ImageName;
+					Slider.ImageName = ImageName;
 				}
 
-				await Update(Comment);
+				await Update(Slider);
 
-				return UpdateCommentResult.Success;
+				return UpdateSliderResult.Success;
 			}
 			catch (Exception Exception)
 			{
 				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return UpdateCommentResult.Error;
+				return UpdateSliderResult.Error;
 			}
 		}
 		#endregion

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CoreLayer.Utilities
+﻿namespace CoreLayer.Utilities
 {
 	public static class TextHelper
 	{

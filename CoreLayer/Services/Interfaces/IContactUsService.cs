@@ -1,6 +1,5 @@
 ﻿using CoreLayer.DTOs.ContactUs;
 using DataLayer.Entities.ContactUs;
-using DataLayer.Entities.Services;
 
 namespace CoreLayer.Services.Interfaces
 {
@@ -9,8 +8,8 @@ namespace CoreLayer.Services.Interfaces
 		Task<ContactUsDTO> GetContactUs();
 		Task<ContactUs> GetContactUsById(int Id);
 
-		Task<bool> Update(Service Service);
+		Task<bool> Update(ContactUs ContactUs);
 
-		Task<UpdateContactUsResult> UpdateContact(UpdateContactUsDTO UpdateContactUsDTO);
+		Task<UpdateContactUsResult> UpdateContactUs(UpdateContactUsDTO UpdateContactUsDTO);
 	}
 }

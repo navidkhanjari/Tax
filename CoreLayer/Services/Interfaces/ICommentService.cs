@@ -1,6 +1,5 @@
 ﻿using CoreLayer.DTOs.Comments;
 using DataLayer.Entities.Comments;
-using DataLayer.Entities.Services;
 
 namespace CoreLayer.Services.Interfaces
 {

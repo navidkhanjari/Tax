@@ -1,4 +1,6 @@
-﻿namespace CoreLayer.DTOs.Posts
+﻿using Microsoft.AspNetCore.Http;
+
+namespace CoreLayer.DTOs.Posts
 {
 	public class CreatePostDTO
 	{
@@ -6,7 +8,7 @@
 		public string ShortDescription { get; set; }
 		public string Description { get; set; }
 		public string Authour { get; set; }
-		public string ImageName { get; set; }
+		public IFormFile Image { get; set; }
 		public bool Visible { get; set; }
 		public string Slug { get; set; }
 		public string MetaTitle { get; set; }
@@ -15,6 +17,6 @@
 	}
 	public enum CreatePostResult
 	{
-		Success, Error,
+		Success, Error, SlugExist
 	}
 }
