@@ -96,6 +96,15 @@ namespace CoreLayer.Services.Implementation
 
 				if (UpdateAboutUsDTO.Image != null)
 				{
+					//delete old image
+
+					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.AboutUsImagePath, AboutUs.ImageName);
+
+					if (File.Exists(ImagePath))
+					{
+						File.Delete(ImagePath);
+					}
+
 					string ImageName = UpdateAboutUsDTO.Image.SaveFileAndReturnName(FilePath.AboutUsImageUploadPath);
 
 					AboutUs.ImageName = ImageName;
