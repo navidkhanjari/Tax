@@ -181,7 +181,14 @@ namespace CoreLayer.Services.Implementation
 
 				if (UpdatePostDTO.Image != null)
 				{
-					//remove old image
+					//delete old image
+					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.PostImagePath, Post.ImageName);
+
+					if (File.Exists(ImagePath))
+					{
+						File.Delete(ImagePath);
+					}
+
 					string ImageName = UpdatePostDTO.Image.SaveFileAndReturnName(FilePath.PostImageUploadPath);
 
 					Post.ImageName = ImageName;

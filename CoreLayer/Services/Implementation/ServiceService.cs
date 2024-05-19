@@ -153,6 +153,12 @@ namespace CoreLayer.Services.Implementation
 				if (UpdateServiceDTO.Icon != null)
 				{
 					//delete old icon
+					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.ServiceImagePath, Service.IconName);
+
+					if (File.Exists(ImagePath))
+					{
+						File.Delete(ImagePath);
+					}
 
 					string IconName = UpdateServiceDTO.Icon.SaveFileAndReturnName(FilePath.ServiceImageUploadPath);
 

@@ -3,6 +3,7 @@ using CoreLayer.DTOs.Sliders;
 using CoreLayer.Services.Interfaces;
 using CoreLayer.Software;
 using CoreLayer.Utilities;
+using DataLayer.Entities.Services;
 using DataLayer.Entities.Sliders;
 using Microsoft.EntityFrameworkCore;
 using NakShop.Data.Context;
@@ -65,6 +66,7 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
+
 		#region (Add)
 		public async Task<bool> Add(Slider Slider)
 		{
@@ -122,6 +124,7 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
+
 		#region (Create Slider)
 		public async Task<CreateSliderResult> CreateSlider(CreateSliderDTO CreateSliderDTO)
 		{
@@ -158,6 +161,13 @@ namespace CoreLayer.Services.Implementation
 				if (UpdateSliderDTO.Image != null)
 				{
 					// delete old image
+					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.SliderImagePath, Slider.ImageName);
+
+					if (File.Exists(ImagePath))
+					{
+						File.Delete(ImagePath);
+					}
+
 					string ImageName = UpdateSliderDTO.Image.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
 
 					Slider.ImageName = ImageName;

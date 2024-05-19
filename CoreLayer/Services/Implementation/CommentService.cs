@@ -3,6 +3,7 @@ using CoreLayer.DTOs.Comments;
 using CoreLayer.Services.Interfaces;
 using CoreLayer.Software;
 using CoreLayer.Utilities;
+using DataLayer.Entities.AboutUs;
 using DataLayer.Entities.Comments;
 using Microsoft.EntityFrameworkCore;
 using NakShop.Data.Context;
@@ -157,6 +158,12 @@ namespace CoreLayer.Services.Implementation
 				if (UpdateCommentDTO.CustomerImage != null)
 				{
 					// delete old image
+					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.CommentImagePath, Comment.CustomerImageName);
+
+					if (File.Exists(ImagePath))
+					{
+						File.Delete(ImagePath);
+					}
 
 					string ImageName = UpdateCommentDTO.CustomerImage.SaveFileAndReturnName(FilePath.CommentImageUploadPath);
 
