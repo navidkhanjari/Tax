@@ -1,6 +1,5 @@
 ﻿using CoreLayer.DTOs.AboutUs;
 using DataLayer.Entities.AboutUs;
-using DataLayer.Entities.Services;
 
 namespace CoreLayer.Services.Interfaces
 {
@@ -9,7 +8,7 @@ namespace CoreLayer.Services.Interfaces
 		Task<AboutUsDTO> GetAboutUs();
 		Task<AboutUs> GetAboutUsById(int Id);
 
-		Task<bool> Update(Service Service);
+		Task<bool> Update(AboutUs AboutUs);
 
 		Task<UpdateAboutUsResult> UpdateAboutUs(UpdateAboutUsDTO UpdateAboutUsDTO);
 	}

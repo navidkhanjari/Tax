@@ -2,9 +2,9 @@
 {
 	public class FilePath
 	{
-		#region (Project)
-		public static readonly string ProjectImagePath = "/images/projects/origin/";
-		public static readonly string ProjectImageUploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/projects/origin/");
+		#region (About Us)
+		public static readonly string AboutUsImagePath = "/images/aboutus/origin/";
+		public static readonly string AboutUsImageUploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/aboutus/origin/");
 		#endregion
 	}
 }

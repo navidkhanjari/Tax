@@ -30,7 +30,7 @@ namespace CoreLayer.Utilities
 			catch { }
 		}
 
-		public static string SaveFileAndReturnName(IFormFile File, string SavePath)
+		public static string SaveFileAndReturnName(this IFormFile File, string SavePath)
 		{
 			if (File == null)
 			{
