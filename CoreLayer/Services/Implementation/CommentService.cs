@@ -149,7 +149,10 @@ namespace CoreLayer.Services.Implementation
 		{
 			try
 			{
-				Comment Comment = _Mapper.Map<Comment>(UpdateCommentDTO);
+				Comment Comment = await GetCommentById(UpdateCommentDTO.Id);
+
+				// Update Comment DTO Map To Comment
+				_Mapper.Map(UpdateCommentDTO, Comment);
 
 				if (UpdateCommentDTO.CustomerImage != null)
 				{
