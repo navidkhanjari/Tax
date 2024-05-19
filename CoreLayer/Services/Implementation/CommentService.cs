@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using CoreLayer.DTOs.Comments;
 using CoreLayer.Services.Interfaces;
+using CoreLayer.Software;
+using CoreLayer.Utilities;
 using DataLayer.Entities.Comments;
-using DataLayer.Entities.Services;
+using Microsoft.EntityFrameworkCore;
 using NakShop.Data.Context;
+using System.Reflection;
 
 namespace CoreLayer.Services.Implementation
 {
@@ -19,39 +22,153 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
-		public Task<bool> Add(Service Service)
+		#region (Get Comment By Id)
+		public async Task<Comment> GetCommentById(int Id)
 		{
-			throw new NotImplementedException();
-		}
+			try
+			{
+				Comment Comment = await _Context.Comments.SingleOrDefaultAsync(C => C.Id == Id);
 
-		public Task<CreateCommentResult> CreateComment(CreateCommentDTO CreateCommentDTO)
-		{
-			throw new NotImplementedException();
-		}
+				return Comment;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-		public Task<bool> Delete(Service Service)
-		{
-			throw new NotImplementedException();
+				return null;
+			}
 		}
+		#endregion
 
-		public Task<Comment> GetCommentById(int Id)
+		#region (Get Comments)
+		public async Task<List<CommentsDTO>> GetComments()
 		{
-			throw new NotImplementedException();
-		}
+			try
+			{
+				List<Comment> Comments = await _Context.Comments.ToListAsync();
 
-		public Task<List<CommentsDTO>> GetComments()
-		{
-			throw new NotImplementedException();
-		}
+				List<CommentsDTO> CommentsDTOs = _Mapper.Map<List<Comment>, List<CommentsDTO>>(Comments);
 
-		public Task<bool> Update(Service Service)
-		{
-			throw new NotImplementedException();
-		}
+				return CommentsDTOs;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-		public Task<UpdateCommentResult> UpdateComment(UpdateCommentDTO UpdateCommentDTO)
-		{
-			throw new NotImplementedException();
+				return null;
+			}
 		}
+		#endregion
+
+
+		#region(Add)
+		public async Task<bool> Add(Comment Comment)
+		{
+			try
+			{
+				await _Context.Comments.AddAsync(Comment);
+
+				await _Context.SaveChangesAsync();
+
+				return true;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return false;
+			}
+		}
+		#endregion
+
+		#region (Update)
+		public async Task<bool> Update(Comment Comment)
+		{
+			try
+			{
+				_Context.Comments.Update(Comment);
+				await _Context.SaveChangesAsync();
+
+				return true;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return false;
+			}
+		}
+		#endregion
+
+		#region (Delete)
+		public async Task<bool> Delete(Comment Comment)
+		{
+			try
+			{
+				_Context.Comments.Remove(Comment);
+				await _Context.SaveChangesAsync();
+
+				return true;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return false;
+			}
+		}
+		#endregion
+
+
+		#region (Create Comment)
+		public async Task<CreateCommentResult> CreateComment(CreateCommentDTO CreateCommentDTO)
+		{
+			try
+			{
+				Comment Comment = _Mapper.Map<Comment>(CreateCommentDTO);
+
+				string ImageName = CreateCommentDTO.CustomerImage.SaveFileAndReturnName(FilePath.CommentImageUploadPath);
+
+				Comment.CustomerImageName = ImageName;
+
+				await Add(Comment);
+
+				return CreateCommentResult.Success;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return CreateCommentResult.Error;
+			}
+		}
+		#endregion
+
+		#region (Update Comment)
+		public async Task<UpdateCommentResult> UpdateComment(UpdateCommentDTO UpdateCommentDTO)
+		{
+			try
+			{
+				Comment Comment = _Mapper.Map<Comment>(UpdateCommentDTO);
+
+				if (UpdateCommentDTO.CustomerImage != null)
+				{
+					string ImageName = UpdateCommentDTO.CustomerImage.SaveFileAndReturnName(FilePath.CommentImageUploadPath);
+
+					Comment.CustomerImageName = ImageName;
+				}
+
+				await Update(Comment);
+
+				return UpdateCommentResult.Success;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return UpdateCommentResult.Error;
+			}
+		}
+		#endregion
 	}
 }

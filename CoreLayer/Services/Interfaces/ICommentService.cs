@@ -9,9 +9,9 @@ namespace CoreLayer.Services.Interfaces
 		Task<List<CommentsDTO>> GetComments();
 		Task<Comment> GetCommentById(int Id);
 
-		Task<bool> Add(Service Service);
-		Task<bool> Update(Service Service);
-		Task<bool> Delete(Service Service);
+		Task<bool> Add(Comment Comment);
+		Task<bool> Update(Comment Comment);
+		Task<bool> Delete(Comment Comment);
 
 		Task<CreateCommentResult> CreateComment(CreateCommentDTO CreateCommentDTO);
 		Task<UpdateCommentResult> UpdateComment(UpdateCommentDTO UpdateCommentDTO);
