@@ -1,4 +1,5 @@
-﻿using CoreLayer.DTOs.Posts;
+﻿using CoreLayer.DTOs.Filter;
+using CoreLayer.DTOs.Posts;
 using DataLayer.Entities.Posts;
 
 namespace CoreLayer.Services.Interfaces
@@ -8,6 +9,8 @@ namespace CoreLayer.Services.Interfaces
 		Task<List<Post>> GetPosts();
 		Task<Post> GetPostById(int Id);
 		Task<Post> GetPostBySlug(string Slug);
+
+		PostFilterDTO GetPostByFilter(PostFilterDTO PostFilterDTO);
 
 		Task<bool> Add(Post Post);
 		Task<bool> Update(Post Post);

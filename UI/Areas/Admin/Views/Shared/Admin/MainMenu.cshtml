@@ -1,0 +1,81 @@
+﻿@{
+	var selected = ViewData["selected"]?.ToString() ?? "";
+}
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+	<div class="navbar-header">
+		<ul class="nav navbar-nav flex-row">
+			<li class="nav-item mr-auto">
+				<a class="navbar-brand" href="#">
+					<h2 class="brand-text mb-0">پنل مدیریت</h2>
+				</a>
+			</li>
+			<li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="bx bx-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon bx bx-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="bx-disc"></i></a></li>
+		</ul>
+	</div>
+	<div class="shadow-bottom"></div>
+	<div class="main-menu-content">
+		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
+			<li class="nav-item">
+				<a href="/"><i class='bx bx-world'></i><span class="menu-title" data-i18n="globe">مشاهده وب سایت </span></a>
+			</li>
+		</ul>
+
+		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
+			<li class="nav-item">
+				<a href="/Admin"><i class='bx bxs-dashboard'></i><span class="menu-title" data-i18n="globe">داشبورد </span></a>
+			</li>
+		</ul>
+
+		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+			<li class="nav-item">
+				<a href="javascript:void(0)"><i class='bx bx-slider'></i><span class="menu-title"> اسلایدر ها</span></a>
+				<ul class="menu-content">
+					<li class="@(selected == "Sliders_Index" ? "active" : "null")">
+						<a href="/Admin/Sliders"><i class="bx bx-image"></i><span class="menu-item">لیست اسلایدر ها</span></a>
+					</li>
+					<li class="@(selected == "Sliders_Create" ? "active" : "null")">
+						<a href="/Admin/Sliders/Create"><i class='bx bx-image-add'></i><span class="menu-item">ثبت اسلایدر جدید</span></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+			<li class="nav-item">
+				<a href="javascript:void(0)"><i class='bx bx-news'></i><span class="menu-title">مدیریت وبلاگ و مقالات</span></a>
+				<ul class="menu-content">
+					<li class="@(selected == "Posts_Index" ? "active" : "null")">
+						<a href="/Admin/Posts"><i class='bx bx-calendar-alt'></i><span class="menu-item">لیست مقاله ها</span></a>
+					</li>
+
+					<li class="@(selected == "Posts_Create" ? "active" : "null")">
+						<a href="/Admin/Posts/Create"><i class='bx bx-task'></i><span class="menu-item">ثبت مقاله جدید</span></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+			<li class="nav-item">
+				<a href="javascript:void(0)"><i class='bx bx-bookmarks'></i><span class="menu-title"> مدیریت صفحات</span></a>
+				<ul class="menu-content">
+					<li class="@(selected == "ContactUs_Index" ? "active" : "null")">
+						<a href="/Admin/ContactUs"><i class='bx bx-phone-call'></i><span class="menu-item">تماس با ما</span></a>
+					</li>
+					<li class="@(selected == "AboutUs_Index" ? "active" : "null")">
+						<a href="/Admin/AboutUs"><i class='bx bxs-quote-single-left'></i><span class="menu-item">درباره ما</span></a>
+					</li>
+					<li class="@(selected == "Comments_Index" ? "active" : "null")">
+						<a href="/Admin/Comments"><i class='bx bx-comment'></i><span class="menu-item">نظرات مشتریان</span></a>
+					</li>
+					<li class="@(selected == "FAQs_Index" ? "active" : "null")">
+						<a href="/Admin/FAQs"><i class='bx bx-question-mark'></i><span class="menu-item">سوالات متداول</span></a>
+					</li>
+					<li class="@(selected == "Services_Index" ? "active" : "null")">
+						<a href="/Admin/Services"><i class='bx bxs-calculator'></i><span class="menu-item">خدمات ما</span></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,185 @@
+﻿@model CreatePostDTO;
+@{
+	ViewData["Title"] = "ثبت مقاله جدید";
+	ViewData["selected"] = "Posts_Create";
+}
+<section>
+	<div class="card">
+		<div class="card-content">
+			<div class="card-body">
+				<ul class="nav nav-tabs mb-2">
+					<li class="nav-item current">
+						<a class="nav-link d-flex align-items-center active">
+							<i class="bx bxs-image mr-25"></i><span class="d-none d-sm-block">مقاله</span>
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active">
+						<form method="post" enctype="multipart/form-data">
+
+							<div class="card-title-details d-flex align-items-center mb-1 ml-1">
+								<div class="avatar bg-rgba-primary p-25 mr-2 ml-0">
+									<img id="Selected-Image" class="img-fluid" src="~/Admin/images/ProductPlaceHolder.jpg" height="70" width="70">
+								</div>
+								<div class="mt-n25">
+									<h5>تصویر انتخاب شده</h5>
+									<p class="text-info">سایز وارد شده باید : 00 در 00 </p>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-12 col-md-12 mb-1">
+									<fieldset>
+										<div class="input-group">
+											<div class="custom-file">
+												<input asp-for="Image" type="file" class="custom-file-input" accept="image/jpeg">
+												<label class="custom-file-label">انتخاب تصویر</label>
+											</div>
+										</div>
+									</fieldset>
+									<div class="help-block">
+										<span asp-validation-for="Image" class="text-danger"></span>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="controls">
+											<label asp-for="Title"></label>
+											<input asp-for="Title" type="text" class="form-control text-left">
+											<div class="help-block">
+												<span asp-validation-for="Title" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="controls">
+											<label asp-for="Authour"></label>
+											<input asp-for="Authour" type="text" class="form-control text-left">
+											<div class="help-block">
+												<span asp-validation-for="Authour" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-12 col-lg-12">
+									<div class="form-group">
+										<label asp-for="ShortDescription"></label>
+										<textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
+										<div class="help-block">
+											<span asp-validation-for="ShortDescription" class="text-danger"></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-12 col-lg-12">
+									<div class="form-group">
+										<label asp-for="Description"></label>
+										<textarea class="form-control" id="ckEditor4" asp-for="Description"></textarea>
+										<div class="help-block">
+											<span asp-validation-for="Description" class="text-danger"></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="controls">
+											<label asp-for="Slug"></label>
+											<input asp-for="Slug" type="text" class="form-control text-left">
+											<div class="help-block">
+												<span asp-validation-for="Slug" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="controls">
+											<label asp-for="MetaTitle"></label>
+											<input asp-for="MetaTitle" type="text" class="form-control text-left">
+											<div class="help-block">
+												<span asp-validation-for="MetaTitle" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="controls">
+											<label asp-for="MetaDescription"></label>
+											<input asp-for="MetaDescription" type="text" class="form-control text-left">
+											<div class="help-block">
+												<span asp-validation-for="MetaDescription" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="controls">
+											<label asp-for="MetaKeyWords"></label>
+											<input asp-for="MetaKeyWords" type="text" class="form-control text-left" placeholder="کلمه کلیدی1,کلمه کلیدی2,کلمه کلیدی3">
+											<div class="help-block">
+												<span asp-validation-for="MetaKeyWords" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 col-sm-6 col-lg-6">
+									<div class="form-group">
+										<div class="checkbox">
+											<input asp-for="Visible" type="checkbox" class="checkbox-input">
+											<label asp-for="Visible"></label>
+											<div class="help-block">
+												<span asp-validation-for="Visible" class="text-danger"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+									<button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">ذخیره</button>
+									<button onclick="history.back()" type="reset" class="btn btn-light">انصراف</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+@section Scripts {
+	<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+	<script src="~/admin/custom.js"></script>
+	<script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					$('#Selected-Image').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$("#Image").change(function () {
+			readURL(this);
+		});
+	</script>
+}

@@ -23,34 +23,34 @@ namespace CoreLayer.Mappers
 		public MapperProfile()
 		{
 			CreateMap<AboutUs, AboutUsDTO>().ReverseMap();
-			CreateMap<AboutUs, UpdateAboutUsDTO>();
+			CreateMap<AboutUs, UpdateAboutUsDTO>().ReverseMap();
 
 			CreateMap<ContactUs, UpdateContactUsDTO>();
 			CreateMap<ContactUs, ContactUsDTO>().ReverseMap();
 
 			CreateMap<Comment, CommentsDTO>().ReverseMap();
-			CreateMap<CreateCommentDTO, Comment>();
-			CreateMap<UpdateCommentDTO, Comment>();
+			CreateMap<CreateCommentDTO, Comment>().ReverseMap();
+			CreateMap<UpdateCommentDTO, Comment>().ReverseMap();
 
 			CreateMap<FAQs, FAQsDTO>().ReverseMap();
-			CreateMap<CreateFAQDTO, FAQs>();
-			CreateMap<UpdateFAQDTO, FAQs>();
+			CreateMap<CreateFAQDTO, FAQs>().ReverseMap();
+			CreateMap<UpdateFAQDTO, FAQs>().ReverseMap();
 
 			CreateMap<Message, MessagesDTO>().ReverseMap();
-			CreateMap<CreateMessageDTO, FAQs>();
-			CreateMap<UpdateMessageDTO, FAQs>();
+			CreateMap<CreateMessageDTO, FAQs>().ReverseMap();
+			CreateMap<UpdateMessageDTO, FAQs>().ReverseMap();
 
 			CreateMap<Post, PostDTO>().ReverseMap();
-			CreateMap<CreatePostDTO, Post>();
-			CreateMap<UpdatePostDTO, Post>();
+			CreateMap<CreatePostDTO, Post>().ReverseMap();
+			CreateMap<UpdatePostDTO, Post>().ReverseMap();
 
 			CreateMap<Service, ServiceDTO>().ReverseMap();
-			CreateMap<CreateServiceDTO, Service>();
-			CreateMap<UpdateServiceDTO, Service>();
+			CreateMap<CreateServiceDTO, Service>().ReverseMap();
+			CreateMap<UpdateServiceDTO, Service>().ReverseMap();
 
 			CreateMap<Slider, SliderDTO>().ReverseMap();
-			CreateMap<CreateSliderDTO, Slider>();
-			CreateMap<UpdateSliderDTO, Slider>();
+			CreateMap<CreateSliderDTO, Slider>().ReverseMap();
+			CreateMap<UpdateSliderDTO, Slider>().ReverseMap();
 		}
 	}
 }

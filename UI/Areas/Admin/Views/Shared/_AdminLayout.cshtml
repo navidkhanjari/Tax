@@ -1,0 +1,121 @@
+﻿@{
+	var UserName = User.Identity.Name;
+}
+<!DOCTYPE html>
+<html class="loading" lang="fa" data-textdirection="rtl" dir="rtl">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>@ViewData["Title"] - پنل مدیریت</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/admin/logo/nak-icon.jpg">
+
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/vendors/css/vendors.min.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/vendors/css/charts/apexcharts.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/vendors/css/extensions/dragula.min.css">
+
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/bootstrap-extended.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/colors.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/components.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/themes/dark-layout.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/themes/semi-dark-layout.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/core/menu/menu-types/vertical-menu.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/pages/dashboard-analytics.css">
+	<link rel="stylesheet" type="text/css" href="/Admin/assets/css/plugins/file-uploaders/dropzone.css">
+
+</head>
+<body class="vertical-layout vertical-menu-modern boxicon-layout no-card-shadow 2-columns  navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+	<div class="header-navbar-shadow"></div>
+	<nav class="header-navbar main-header-navbar navbar-expand-lg navbar navbar-with-menu fixed-top ">
+		<div class="navbar-wrapper">
+			<div class="navbar-container content">
+				<div class="navbar-collapse" id="navbar-mobile">
+					<div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
+						<ul class="nav navbar-nav">
+							<li class="nav-item mobile-menu d-xl-none mr-auto">
+								<a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#">
+									<i class="ficon bx bx-menu"></i>
+								</a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav bookmark-icons">
+							<li class="nav-item d-none d-lg-block"><a class="nav-link" href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="پیام "><i class="ficon bx bx-envelope"></i></a></li>
+							<li class="nav-item d-none d-lg-block"><a class="nav-link" href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="گفتگو"><i class="ficon bx bx-chat"></i></a></li>
+						</ul>
+					</div>
+					<ul class="nav navbar-nav float-right">
+						<li class="nav-item d-none d-lg-block">
+							<a class="nav-link nav-link-expand">
+								<i class="ficon bx bx-fullscreen">
+
+								</i>
+							</a>
+						</li>
+
+						<li class="dropdown dropdown-user nav-item">
+							<a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+								<div class="user-nav d-sm-flex d-none">
+									<span class="user-name">@UserName</span><span class="user-status text-success">آنلاین</span>
+								</div>
+								<span>
+									<img class="round" src="/Admin//images/UserPlaceHolder.png" alt="avatar" height="40" width="40">
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<partial name="../../Areas/Admin/Views/Shared/Admin/MainMenu" />
+
+	<div class="app-content content">
+		<div class="content-overlay"></div>
+		<div class="content-wrapper">
+			<div class="content-header row">
+			</div>
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-left">
+								<li class="breadcrumb-item"><a href="/Admin">خانه</a></li>
+								<li class="breadcrumb-item active">@ViewData["Title"]</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			@RenderBody()
+		</div>
+	</div>
+
+	<footer class="footer footer-static footer-light">
+		<p class="clearfix mb-0">
+			<span class="float-left d-inline-block">طراحی و توسعه توسط <a class="text-primary" href="https://github.com/navidkhanjari">نوید خنجری</a></span>
+			<button class="btn btn-primary btn-icon scroll-top" type="button"><i class="bx bx-up-arrow-alt"></i></button>
+		</p>
+	</footer>
+
+	<script src="/Admin/assets/vendors/js/vendors.min.js"></script>
+	<script src="/Admin/assets/fonts/LivIconsEvo/js/LivIconsEvo.tools.min.js"></script>
+	<script src="/Admin/assets/fonts/LivIconsEvo/js/LivIconsEvo.defaults.js"></script>
+	<script src="/Admin/assets/fonts/LivIconsEvo/js/LivIconsEvo.min.js"></script>
+	<script src="/Admin/assets/vendors/js/extensions/dragula.min.js"></script>
+
+	<script src="/Admin/assets/js/core/app-menu.js"></script>
+	<script src="/Admin/assets/js/core/app.js"></script>
+	<script src="/Admin/assets/js/scripts/components.js"></script>
+	<script src="/Admin/assets/js/scripts/footer.js"></script>
+	<script src="/Admin/assets/js/scripts/customizer.js"></script>
+
+	<script src="/Admin/assets/js/scripts/pages/dashboard-analytics.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/sweetalert/sweetalert.js"></script>
+	<script src="~/lib/sweetalert/sweetalertv11.7.5.js"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
