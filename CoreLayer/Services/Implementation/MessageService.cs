@@ -4,7 +4,7 @@ using CoreLayer.Services.Interfaces;
 using CoreLayer.Software;
 using DataLayer.Entities.Messages;
 using Microsoft.EntityFrameworkCore;
-using NakShop.Data.Context;
+using DataLayer.Context;
 using System.Reflection;
 
 namespace CoreLayer.Services.Implementation

@@ -9,7 +9,7 @@ using DataLayer.Entities.Sliders;
 using DataLayer.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace NakShop.Data.Context
+namespace DataLayer.Context
 {
 	public class ApplicationContext : DbContext
 	{

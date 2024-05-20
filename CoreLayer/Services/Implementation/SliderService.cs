@@ -6,7 +6,7 @@ using CoreLayer.Utilities;
 using DataLayer.Entities.Services;
 using DataLayer.Entities.Sliders;
 using Microsoft.EntityFrameworkCore;
-using NakShop.Data.Context;
+using DataLayer.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
