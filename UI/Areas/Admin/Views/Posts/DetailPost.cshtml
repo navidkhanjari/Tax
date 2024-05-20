@@ -1,5 +1,126 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model PostDTO
 @{
+    ViewData["Title"] = "جزییات مقاله";
+    ViewData["selected"] = "Posts_Index";
+}
+
+<form method="post" id="Delete" action="/Admin/Posts/Delete/@Model.Id"></form>
+
+<section>
+    <div class="row">
+        <div class="col-12 col-sm-12 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+            <a onclick="DeleteConfirm(this)" class="btn btn-sm btn-light-danger text-white mr-25">حذف <i class="bx bxs-trash-alt"></i></a>
+
+            <a href="/Admin/Posts/Update/@Model.Id" class="btn btn-sm btn-warning  mr-25">ویرایش <i class="bx bx-edit"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <table class="table table-borderless line-height-2">
+                            <tbody>
+                                <tr>
+                                    <td>تصویر مقاله:</td>
+                                    <td>
+                                        <div class="avatar bg-rgba-primary p-25 mr-2 ml-0">
+                                            <img class="img-fluid" src="@FilePath.PostImagePath@Model.ImageName" height="70" width="70">
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>عنوان:</td>
+                                    <td>@Model.Title</td>
+                                </tr>
+
+                                <tr>
+                                    <td>نویسنده:</td>
+                                    <td>@Model.Authour</td>
+                                </tr>
+
+                                <tr>
+                                    <td>توضیحات کوتاه:</td>
+                                    <td>@Model.ShortDescription</td>
+                                </tr>
+
+                                <tr>
+                                    <td>توضیحات:</td>
+                                    <td>@Model.Description</td>
+                                </tr>
+
+                                <tr>
+                                    <td>بازدید:</td>
+                                    <td>@Model.Description</td>
+                                </tr>
+
+                                <tr>
+                                    <td>تاریخ انتشار:</td>
+                                    <td>@Model.PublishDate.ToShamsi()</td>
+                                </tr>
+
+                                <tr>
+                                    <td>اسلاگ:</td>
+                                    <td>@Model.Slug.SlugToText()</td>
+                                </tr>
+
+                                <tr>
+                                    <td>متا تایتل:</td>
+                                    <td>@Model.MetaTitle</td>
+                                </tr>
+
+                                <tr>
+                                    <td>متا دسکریپشن:</td>
+                                    <td>@Model.MetaDescription</td>
+                                </tr>
+
+                                <tr>
+                                    <td>کلمات کلیدی:</td>
+                                    <td>@Model.MetaKeyWords</td>
+                                </tr>
+
+                                <tr>
+                                    <td>نمایش در سایت:</td>
+                                    @if (Model.Visible)
+                                    {
+                                        <td><span class="text-success">نمایش داده می شود</span></td>
+                                    }
+                                    else
+                                    {
+                                        <td><span class="text-danger">نمایش داده نمی شود</span></td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function DeleteConfirm(event) {
+            Swal.fire({
+                title: 'آیااطمینان دارید؟',
+                text: 'درصورت حذف امکان بازگشت این آیتم وجود ندارد',
+                icon: "info",
+                showCancelButton: true,
+                cancelButtonText: 'خیر',
+                canceButtonClass: 'btn btn-danger',
+                showConfirButton: true,
+                confirmButtonText: 'بله',
+                confirmButtonClass: 'btn btn-success'
+            }).then((result) => {
+                if (result.value) {
+                    $("#Delete").submit();
+                }
+            });
+
+            return false;
+        }
+    </script>
 }

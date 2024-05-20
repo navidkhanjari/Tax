@@ -1,5 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Post>
 @{
+    ViewData["Title"] = "لیست مقاله ها";
+    ViewData["selected"] = "Posts_Index";
 }
+
+<a href="/Admin/Posts/Create" class="btn btn-success mb-2"> افزودن مقاله جدید <i class="bx bx-pencil"></i></a>
+
+<section>
+    <div class="card">
+        <div class="table-responsive">
+            <div class="dataTables_wrapper no-footer">
+                <table class="table mb-0 table-striped table-hover no-footer">
+                    <thead class="thead-dark">
+                        <tr role="row">
+                            <th>تصویر</th>
+                            <th>عنوان</th>
+                            <th>تعداد بازدید</th>
+                            <th>تاریخ انتشار</th>
+                            <th>وضعیت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped">
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var Posts in Model)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="text-bold-700">
+                                        <img class="rounded-circle mr-1" src="@FilePath.PostImagePath@Posts.ImageName" height="70" width="70">
+                                    </td>
+                                    <td>@Posts.Title</td>
+                                    <td>@Posts.Visit</td>
+                                    <td>@Posts.PublishDate.ToShamsi()</td>
+                                    <td>
+                                        <a title="ویرایش" href="/Admin/Posts/Update/@Posts.Id"><i class="bx bxs-edit-alt text-warning"></i></a>
+                                        <a title="جزییات" href="/Admin/Posts/Detail/@Posts.Id"><i class="bx bx-detail text-secondary"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">موردی برای نمایش وجود ندارد</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
