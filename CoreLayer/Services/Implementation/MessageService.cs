@@ -26,7 +26,7 @@ namespace CoreLayer.Services.Implementation
 		{
 			try
 			{
-				List<Message> Messages = await _Context.Messages.ToListAsync();
+				List<Message> Messages = await _Context.Messages.OrderByDescending(M => M.CreateDate).ToListAsync();
 
 				List<MessagesDTO> MessageDTO = _Mapper.Map<List<Message>, List<MessagesDTO>>(Messages);
 
@@ -80,6 +80,26 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
+		#region (Delete)
+		public async Task<bool> Delete(Message Message)
+		{
+			try
+			{
+				_Context.Messages.Remove(Message);
+
+				await _Context.SaveChangesAsync();
+
+				return true;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return false;
+			}
+		}
+		#endregion
+
 
 		#region (Create Message)
 		public async Task<CreateMessageResult> CreateMessage(CreateMessageDTO CreateMessageDTO)
@@ -87,6 +107,8 @@ namespace CoreLayer.Services.Implementation
 			try
 			{
 				Message Message = _Mapper.Map<Message>(CreateMessageDTO);
+
+				Message.CreateDate = DateTime.Now;
 
 				await Add(Message);
 

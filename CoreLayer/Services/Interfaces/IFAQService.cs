@@ -6,7 +6,7 @@ namespace CoreLayer.Services.Interfaces
 	public interface IFAQService
 	{
 		Task<List<FAQs>> GetFAQs();
-		Task<FAQs> GetFAQbyId(int Id);
+		Task<FAQs> GetFAQById(int Id);
 
 		Task<bool> Add(FAQs FAQs);
 		Task<bool> Update(FAQs FAQs);

@@ -14,6 +14,6 @@ namespace CoreLayer.Services.Interfaces
 		Task<bool> Delete(Service Service);
 
 		Task<CreateServiceResult> CreateService(CreateServiceDTO CreateServiceDTO);
-		Task<UpdateServiceResult> UpdatePost(UpdateServiceDTO UpdateServiceDTO);
+		Task<UpdateServiceResult> UpdateService(UpdateServiceDTO UpdateServiceDTO);
 	}
 }

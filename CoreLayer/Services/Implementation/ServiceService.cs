@@ -141,8 +141,8 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
-		#region (Update Post)
-		public async Task<UpdateServiceResult> UpdatePost(UpdateServiceDTO UpdateServiceDTO)
+		#region (Update Service)
+		public async Task<UpdateServiceResult> UpdateService(UpdateServiceDTO UpdateServiceDTO)
 		{
 			try
 			{

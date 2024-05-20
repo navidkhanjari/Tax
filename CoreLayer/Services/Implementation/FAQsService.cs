@@ -41,7 +41,7 @@ namespace CoreLayer.Services.Implementation
 		#endregion
 
 		#region (Get FAQ by Id)
-		public async Task<FAQs> GetFAQbyId(int Id)
+		public async Task<FAQs> GetFAQById(int Id)
 		{
 			try
 			{
@@ -121,7 +121,7 @@ namespace CoreLayer.Services.Implementation
 		{
 			try
 			{
-				FAQs FAQs = await GetFAQbyId(UpdateFAQDTO.Id);
+				FAQs FAQs = await GetFAQById(UpdateFAQDTO.Id);
 
 				_Mapper.Map(UpdateFAQDTO, FAQs);
 

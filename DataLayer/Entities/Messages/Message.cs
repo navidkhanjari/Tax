@@ -6,5 +6,6 @@
 		public string Email { get; set; }
 		public string Number { get; set; }
 		public string Description { get; set; }
-	}
+        public DateTime CreateDate { get; set; }
+    }
 }

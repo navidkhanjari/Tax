@@ -9,6 +9,7 @@ namespace CoreLayer.Services.Interfaces
 		Task<Message> GetMessageById(int Id);
 
 		Task<bool> Add(Message Message);
+		Task<bool> Delete(Message Message);
 
 		Task<CreateMessageResult> CreateMessage(CreateMessageDTO CreateMessageDTO);
 	}
