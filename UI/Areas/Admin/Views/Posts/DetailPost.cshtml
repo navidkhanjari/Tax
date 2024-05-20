@@ -19,7 +19,7 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-12">
                         <table class="table table-borderless line-height-2">
                             <tbody>
                                 <tr>
@@ -47,13 +47,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td>توضیحات:</td>
-                                    <td>@Model.Description</td>
-                                </tr>
-
-                                <tr>
                                     <td>بازدید:</td>
-                                    <td>@Model.Description</td>
+                                    <td>@Model.Visit</td>
                                 </tr>
 
                                 <tr>
@@ -91,6 +86,11 @@
                                     {
                                         <td><span class="text-danger">نمایش داده نمی شود</span></td>
                                     }
+                                </tr>
+
+                                <tr>
+                                    <td>توضیحات:</td>
+                                    <td>@Html.Raw(Model.Description)</td>
                                 </tr>
                             </tbody>
                         </table>

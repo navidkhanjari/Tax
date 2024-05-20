@@ -1,9 +1,14 @@
-﻿namespace DataLayer.Entities.FAQ
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DataLayer.Entities.FAQ
 {
 	public class FAQs : Entity
 	{
+		[Required]
 		public string Question { get; set; }
-		public string Answer { get; set; }
+
+        [Required]
+        public string Answer { get; set; }
 		public bool Visible { get; set; }
 	}
 }

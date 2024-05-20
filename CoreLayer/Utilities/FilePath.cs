@@ -15,6 +15,9 @@
 		#region (Post)
 		public static readonly string PostImagePath = "/images/post/origin/";
 		public static readonly string PostImageUploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/post/origin/");
+
+		public static readonly string PostContentImagePath = "/images/post/content/origin/";
+		public static readonly string PostContentImageUploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/post/content/origin/");
 		#endregion
 
 		#region (Service)

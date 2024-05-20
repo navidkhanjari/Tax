@@ -30,7 +30,6 @@ namespace CoreLayer.DTOs.Posts
 
 
 		[Display(Name = "تصویر جدید")]
-		[Required(ErrorMessage = "لطفا {0} را وارد نمایید")]
 		public IFormFile Image { get; set; }
 
 		[Display(Name = "نمایش در سایت")]
