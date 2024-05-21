@@ -81,6 +81,7 @@ namespace UI.Areas.Admin.Controllers
             }
 
             UpdatePostDTO UpdatePostDTO = _Mapper.Map<UpdatePostDTO>(Post);
+            UpdatePostDTO.CurrentImageName = Post.ImageName;
 
             return View(UpdatePostDTO);
         }

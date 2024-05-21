@@ -14,7 +14,7 @@ namespace CoreLayer.DTOs.AboutUs
 		public string ImageName { get; set; }
 
 		[Display(Name = "تصویر جدید")]
-		public IFormFile? Image { get; set; }
+		public IFormFile Image { get; set; }
 
 		[Display(Name = "مجموع مشتریان")]
 		public string TotalCustomer { get; set; }

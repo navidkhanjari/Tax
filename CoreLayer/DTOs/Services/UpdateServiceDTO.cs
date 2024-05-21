@@ -11,7 +11,7 @@ namespace CoreLayer.DTOs.Services
 		public string IconName { get; set; }
 
 		[Display(Name = "آیکن جدید")]
-		public IFormFile? Icon { get; set; }
+		public IFormFile Icon { get; set; }
 
 		[Display(Name = "عنوان")]
 		[MaxLength(100, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد!")]

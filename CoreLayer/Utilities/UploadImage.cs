@@ -4,7 +4,7 @@ namespace CoreLayer.Utilities
 {
 	public static class UploadImage
 	{
-		public static void AddImageToServer(this IFormFile Image, string FileName, string OrginalPath, string? DeleteFileName = null)
+		public static void AddImageToServer(this IFormFile Image, string FileName, string OrginalPath, string DeleteFileName = null)
 		{
 			try
 			{

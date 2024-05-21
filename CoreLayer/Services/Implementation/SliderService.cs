@@ -3,187 +3,183 @@ using CoreLayer.DTOs.Sliders;
 using CoreLayer.Services.Interfaces;
 using CoreLayer.Software;
 using CoreLayer.Utilities;
-using DataLayer.Entities.Services;
+using DataLayer.Context;
 using DataLayer.Entities.Sliders;
 using Microsoft.EntityFrameworkCore;
-using DataLayer.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoreLayer.Services.Implementation
 {
-	public class SliderService : ISliderService
-	{
-		#region (Dependency Injection)
-		private readonly ApplicationContext _Context;
-		private readonly IMapper _Mapper;
-		public SliderService(ApplicationContext Context, IMapper Mapper)
-		{
-			this._Context = Context;
-			this._Mapper = Mapper;
-		}
-		#endregion
+    public class SliderService : ISliderService
+    {
+        #region (Dependency Injection)
+        private readonly ApplicationContext _Context;
+        private readonly IMapper _Mapper;
+        public SliderService(ApplicationContext Context, IMapper Mapper)
+        {
+            this._Context = Context;
+            this._Mapper = Mapper;
+        }
+        #endregion
 
-		#region (Get Sliders)
-		public async Task<List<SliderDTO>> GetSliders()
-		{
-			try
-			{
-				List<Slider> Sliders = await _Context.Sliders.ToListAsync();
+        #region (Get Sliders)
+        public async Task<List<SliderDTO>> GetSliders()
+        {
+            try
+            {
+                List<Slider> Sliders = await _Context.Sliders.ToListAsync();
 
-				List<SliderDTO> SliderDTOs = _Mapper.Map<List<Slider>, List<SliderDTO>>(Sliders);
+                List<SliderDTO> SliderDTOs = _Mapper.Map<List<Slider>, List<SliderDTO>>(Sliders);
 
-				return SliderDTOs;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                return SliderDTOs;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return null;
-			}
-		}
-		#endregion
+                return null;
+            }
+        }
+        #endregion
 
-		#region (Get Slider By Id)
-		public async Task<Slider> GetSliderById(int Id)
-		{
-			try
-			{
-				Slider Slider = await _Context.Sliders.SingleOrDefaultAsync(S => S.Id == Id);
+        #region (Get Slider By Id)
+        public async Task<Slider> GetSliderById(int Id)
+        {
+            try
+            {
+                Slider Slider = await _Context.Sliders.SingleOrDefaultAsync(S => S.Id == Id);
 
-				return Slider;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                return Slider;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return null;
-			}
-		}
-		#endregion
-
-
-		#region (Add)
-		public async Task<bool> Add(Slider Slider)
-		{
-			try
-			{
-				await _Context.Sliders.AddAsync(Slider);
-				await _Context.SaveChangesAsync();
-
-				return true;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
-
-				return false;
-			}
-		}
-		#endregion
-
-		#region (Update)
-		public async Task<bool> Update(Slider Slider)
-		{
-			try
-			{
-				_Context.Sliders.Update(Slider);
-				await _Context.SaveChangesAsync();
-
-				return true;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
-
-				return false;
-			}
-		}
-		#endregion
-
-		#region (Delete)
-		public async Task<bool> Delete(Slider Slider)
-		{
-			try
-			{
-				_Context.Sliders.Remove(Slider);
-				await _Context.SaveChangesAsync();
-
-				return true;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
-
-				return false;
-			}
-		}
-		#endregion
+                return null;
+            }
+        }
+        #endregion
 
 
-		#region (Create Slider)
-		public async Task<CreateSliderResult> CreateSlider(CreateSliderDTO CreateSliderDTO)
-		{
-			try
-			{
-				Slider Slider = _Mapper.Map<Slider>(CreateSliderDTO);
+        #region (Add)
+        public async Task<bool> Add(Slider Slider)
+        {
+            try
+            {
+                await _Context.Sliders.AddAsync(Slider);
+                await _Context.SaveChangesAsync();
 
-				string ImageName = CreateSliderDTO.Image.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
+                return true;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				Slider.ImageName = ImageName;
+                return false;
+            }
+        }
+        #endregion
 
-				await Add(Slider);
+        #region (Update)
+        public async Task<bool> Update(Slider Slider)
+        {
+            try
+            {
+                _Context.Sliders.Update(Slider);
+                await _Context.SaveChangesAsync();
 
-				return CreateSliderResult.Success;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                return true;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return CreateSliderResult.Error;
-			}
-		}
-		#endregion
+                return false;
+            }
+        }
+        #endregion
 
-		#region (Update Slider)
-		public async Task<UpdateSliderResult> UpdateSlider(UpdateSliderDTO UpdateSliderDTO)
-		{
-			try
-			{
-				Slider Slider = await GetSliderById(UpdateSliderDTO.Id);
+        #region (Delete)
+        public async Task<bool> Delete(Slider Slider)
+        {
+            try
+            {
+                _Context.Sliders.Remove(Slider);
+                await _Context.SaveChangesAsync();
 
-				_Mapper.Map(UpdateSliderDTO, Slider);
+                return true;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				if (UpdateSliderDTO.Image != null)
-				{
-					// delete old image
-					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.SliderImagePath, Slider.ImageName);
+                return false;
+            }
+        }
+        #endregion
 
-					if (File.Exists(ImagePath))
-					{
-						File.Delete(ImagePath);
-					}
 
-					string ImageName = UpdateSliderDTO.Image.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
+        #region (Create Slider)
+        public async Task<CreateSliderResult> CreateSlider(CreateSliderDTO CreateSliderDTO)
+        {
+            try
+            {
+                Slider Slider = _Mapper.Map<Slider>(CreateSliderDTO);
 
-					Slider.ImageName = ImageName;
-				}
+                string ImageName = CreateSliderDTO.Image.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
 
-				await Update(Slider);
+                Slider.ImageName = ImageName;
 
-				return UpdateSliderResult.Success;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                await Add(Slider);
 
-				return UpdateSliderResult.Error;
-			}
-		}
-		#endregion
-	}
+                return CreateSliderResult.Success;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+                return CreateSliderResult.Error;
+            }
+        }
+        #endregion
+
+        #region (Update Slider)
+        public async Task<UpdateSliderResult> UpdateSlider(UpdateSliderDTO UpdateSliderDTO)
+        {
+            try
+            {
+                Slider Slider = await GetSliderById(UpdateSliderDTO.Id);
+
+                
+                _Mapper.Map(UpdateSliderDTO, Slider);
+
+                if (UpdateSliderDTO.File != null)
+                {
+                    // delete old image
+                    var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.SliderImagePath, Slider.ImageName);
+
+                    if (File.Exists(ImagePath))
+                    {
+                        File.Delete(ImagePath);
+                    }
+
+                    string ImageName = UpdateSliderDTO.File.SaveFileAndReturnName(FilePath.SliderImageUploadPath);
+
+                    Slider.ImageName = ImageName;
+                }
+
+
+                await Update(Slider);
+
+                return UpdateSliderResult.Success;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+                return UpdateSliderResult.Error;
+            }
+        }
+        #endregion
+    }
 }

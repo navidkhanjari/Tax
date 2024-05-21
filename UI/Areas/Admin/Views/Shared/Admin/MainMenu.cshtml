@@ -1,7 +1,7 @@
 ﻿@{
 	var selected = ViewData["selected"]?.ToString() ?? "";
 }
-<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
 	<div class="navbar-header">
 		<ul class="nav navbar-nav flex-row">
 			<li class="nav-item mr-auto">
@@ -28,20 +28,6 @@
 
 		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 			<li class="nav-item">
-				<a href="javascript:void(0)"><i class='bx bx-slider'></i><span class="menu-title"> اسلایدر ها</span></a>
-				<ul class="menu-content">
-					<li class="@(selected == "Sliders_Index" ? "active" : "null")">
-						<a href="/Admin/Sliders"><i class="bx bx-image"></i><span class="menu-item">لیست اسلایدر ها</span></a>
-					</li>
-					<li class="@(selected == "Sliders_Create" ? "active" : "null")">
-						<a href="/Admin/Sliders/Create"><i class='bx bx-image-add'></i><span class="menu-item">ثبت اسلایدر جدید</span></a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-
-		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-			<li class="nav-item">
 				<a href="javascript:void(0)"><i class='bx bx-news'></i><span class="menu-title">مدیریت وبلاگ و مقالات</span></a>
 				<ul class="menu-content">
 					<li class="@(selected == "Posts_Index" ? "active" : "null")">
@@ -50,6 +36,20 @@
 
 					<li class="@(selected == "Posts_Create" ? "active" : "null")">
 						<a href="/Admin/Posts/Create"><i class='bx bx-task'></i><span class="menu-item">ثبت مقاله جدید</span></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+			<li class="nav-item">
+				<a href="javascript:void(0)"><i class='bx bx-slider'></i><span class="menu-title"> اسلایدر ها</span></a>
+				<ul class="menu-content">
+					<li class="@(selected == "Sliders_Index" ? "active" : "null")">
+						<a href="/Admin/Sliders"><i class="bx bx-image"></i><span class="menu-item">لیست اسلایدر ها</span></a>
+					</li>
+					<li class="@(selected == "Sliders_Create" ? "active" : "null")">
+						<a href="/Admin/Sliders/Create"><i class='bx bx-image-add'></i><span class="menu-item">ثبت اسلایدر جدید</span></a>
 					</li>
 				</ul>
 			</li>

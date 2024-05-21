@@ -7,11 +7,11 @@ namespace CoreLayer.DTOs.Sliders
 	{
         public int Id { get; set; }
 
-		[Display(Name = "تصویر قعلی")]
-		public string ImageNmae { get; set; }
+		[Display(Name = "تصویر فعلی")]
+		public string CurrentImageName { get; set; }
 		
 		[Display(Name = "تصویر جدید")]
-		public IFormFile? Image { get; set; }
+		public IFormFile File { get; set; }
 
 		[Display(Name = "عنوان")]
 		[Required(ErrorMessage = "لطفا {0} را وارد نمایید")]

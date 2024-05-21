@@ -1,0 +1,62 @@
+﻿@model List<SliderDTO>
+@{
+    ViewData["Title"] = "لیست اسلایدر ها";
+    ViewData["selected"] = "Sliders_Index";
+}
+
+<a href="/Admin/Sliders/Create" class="btn btn-success mb-2"> افزودن اسلایدر جدید <i class="bx bx-list-plus"></i></a>
+
+<section>
+    <div class="card">
+        <div class="table-responsive">
+            <div class="dataTables_wrapper no-footer">
+                <table class="table mb-0 table-striped table-hover no-footer">
+                    <thead class="thead-dark">
+                        <tr role="row">
+                            <th>تصویر</th>
+                            <th>عنوان</th>
+                            <th>توضیح کوتاه</th>
+                            <th>آدرس</th>
+                            <th>نمایش در سایت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var Sliders in Model)
+                            {
+                                <tr role="row" class="odd">
+                                    <td class="text-bold-700">
+                                        <img class="rounded-circle mr-1" src="@FilePath.SliderImagePath@Sliders.ImageName" height="70" width="70">
+                                    </td>
+                                    <td>@Sliders.Title</td>
+                                    <td>@Sliders.Description</td>
+                                    <td>@Sliders.Domain</td>
+                                    @if (Sliders.Visible)
+                                    {
+                                        <td><i class='bx bx-checkbox-checked text-success'></i></td>
+                                    }
+                                    else
+                                    {
+                                        <td><i class='bx bxs-x-square text-danger'></i></td>
+                                    }
+                                    <td>
+                                        <a title="ویرایش" href="/Admin/Sliders/Update/@Sliders.Id"><i class="bx bxs-edit-alt text-warning"></i></a>
+                                        <a title="جزییات" href="/Admin/Sliders/Detail/@Sliders.Id"><i class="bx bx-detail text-secondary"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">موردی برای نمایش وجود ندارد</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

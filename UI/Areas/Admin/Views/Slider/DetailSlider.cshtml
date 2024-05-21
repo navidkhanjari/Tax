@@ -1,0 +1,91 @@
+﻿@model SliderDTO
+@{
+    ViewData["Title"] = "جزییات اسلایدر";
+    ViewData["selected"] = "Sliders_Index";
+}
+
+<form method="post" id="Delete" action="/Admin/Sliders/Delete/@Model.Id"></form>
+
+<section>
+    <div class="row">
+        <div class="col-12 col-sm-12 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+            <a onclick="DeleteConfirm(this)" class="btn btn-sm btn-light-danger text-white mr-25">حذف <i class="bx bxs-trash-alt"></i></a>
+
+            <a href="/Admin/Sliders/Update/@Model.Id" class="btn btn-sm btn-warning  mr-25">ویرایش <i class="bx bx-edit"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <table class="table table-borderless line-height-2">
+                            <tbody>
+                                <tr>
+                                    <td>تصویر اسلایدر:</td>
+                                    <td>
+                                        <div class="avatar bg-rgba-primary p-25 mr-2 ml-0">
+                                            <img class="img-fluid" src="@FilePath.SliderImagePath@Model.ImageName" height="70" width="70">
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>عنوان:</td>
+                                    <td>@Model.Title</td>
+                                </tr>
+
+                                <tr>
+                                    <td>توضیح کوتاه:</td>
+                                    <td>@Model.Description</td>
+                                </tr>
+
+                                <tr>
+                                    <td>آدرس:</td>
+                                    <td>@Model.Domain</td>
+                                </tr>
+
+                                <tr>
+                                    <td>نمایش در سایت:</td>
+                                    @if (Model.Visible)
+                                    {
+                                        <td><span class="text-success">نمایش داده می شود</span></td>
+                                    }
+                                    else
+                                    {
+                                        <td><span class="text-danger">نمایش داده نمی شود</span></td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function DeleteConfirm(event) {
+            Swal.fire({
+                title: 'آیااطمینان دارید؟',
+                text: 'درصورت حذف امکان بازگشت این آیتم وجود ندارد',
+                icon: "info",
+                showCancelButton: true,
+                cancelButtonText: 'خیر',
+                canceButtonClass: 'btn btn-danger',
+                showConfirButton: true,
+                confirmButtonText: 'بله',
+                confirmButtonClass: 'btn btn-success'
+            }).then((result) => {
+                if (result.value) {
+                    $("#Delete").submit();
+                }
+            });
+
+            return false;
+        }
+    </script>
+}
