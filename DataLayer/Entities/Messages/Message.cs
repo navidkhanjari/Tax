@@ -18,6 +18,9 @@ namespace DataLayer.Entities.Messages
 		[Required]
 		[MaxLength(600)]
 		public string Description { get; set; }
-		public DateTime CreateDate { get; set; }
+
+        public bool Read { get; set; }
+
+        public DateTime CreateDate { get; set; }
 	}
 }

@@ -1,0 +1,59 @@
+﻿@model List<MessagesDTO>
+@{
+    ViewData["Title"] = "لیست پیام ها";
+}
+
+<section>
+    <div class="card">
+        <div class="table-responsive">
+            <div class="dataTables_wrapper no-footer">
+                <table class="table mb-0 table-striped table-hover no-footer">
+                    <thead class="thead-dark">
+                        <tr role="row">
+                            <th>نام و نام خانوادگی</th>
+                            <th>ایمیل</th>
+                            <th>شماره تماس</th>
+                            <th>تاریخ ارسال</th>
+                            <th>وضعیت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var Message in Model)
+                            {
+                                <tr role="row" class="odd">
+                                    <td>@Message.FullName</td>
+                                    <td>@Message.Email</td>
+                                    <td>@Message.Number</td>
+                                    <td>@Message.CreateDate.ToShamsi()</td>
+                                    <td>
+                                        @if (Message.Read)
+                                        {
+                                            <span class="text-success">خوانده شده</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">خوانده نشده</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <a title="جزییات" href="/Admin/Messages/Detail/@Message.Id"><i class="bx bx-detail text-secondary"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">موردی برای نمایش وجود ندارد</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

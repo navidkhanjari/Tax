@@ -1,0 +1,77 @@
+﻿@model MessagesDTO
+@{
+    ViewData["Title"] = "پیام ثبت شده";
+}
+
+<form method="post" id="Delete" action="/Admin/Messages/Delete/@Model.Id"></form>
+
+
+<section>
+    <div class="row">
+        <div class="col-12 col-sm-12 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+            <a onclick="DeleteConfirm(this)" class="btn btn-sm btn-light-danger text-white mr-25">حذف <i class="bx bxs-trash-alt"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <table class="table table-borderless line-height-2">
+                            <tbody>
+                                <tr>
+                                    <td>نام و نام خانوادگی:</td>
+                                    <td>@Model.FullName</td>
+                                </tr>
+
+                                <tr>
+                                    <td>ایمیل:</td>
+                                    <td>@Model.Email</td>
+                                </tr>
+                                <tr>
+                                    <td>شماره تماس:</td>
+                                    <td>@Model.Number</td>
+                                </tr>
+
+                                <tr>
+                                    <td>توضیحات:</td>
+                                    <td>@Model.Description</td>
+                                </tr>
+
+                                <tr>
+                                    <td>تاریخ ارسال:</td>
+                                    <td>@Model.CreateDate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function DeleteConfirm(event) {
+            Swal.fire({
+                title: 'آیا اطمینان دارید؟',
+                text: 'درصورت حذف امکان بازگشت این آیتم وجود ندارد',
+                icon: "info",
+                showCancelButton: true,
+                cancelButtonText: 'خیر',
+                canceButtonClass: 'btn btn-danger',
+                showConfirButton: true,
+                confirmButtonText: 'بله',
+                confirmButtonClass: 'btn btn-success'
+            }).then((result) => {
+                if (result.value) {
+                    $("#Delete").submit();
+                }
+            });
+
+            return false;
+        }
+    </script>
+}

@@ -38,7 +38,6 @@ namespace CoreLayer.Mappers
 
 			CreateMap<Message, MessagesDTO>().ReverseMap();
 			CreateMap<CreateMessageDTO, FAQs>().ReverseMap();
-			CreateMap<UpdateMessageDTO, FAQs>().ReverseMap();
 
 			CreateMap<Post, PostDTO>().ReverseMap();
 			CreateMap<CreatePostDTO, Post>().ReverseMap();

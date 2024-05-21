@@ -94,7 +94,7 @@ namespace CoreLayer.Services.Implementation
 
 				_Mapper.Map(UpdateAboutUsDTO, AboutUs);
 
-				if (UpdateAboutUsDTO.Image != null)
+				if (UpdateAboutUsDTO.File != null)
 				{
 					//delete old image
 
@@ -105,7 +105,7 @@ namespace CoreLayer.Services.Implementation
 						File.Delete(ImagePath);
 					}
 
-					string ImageName = UpdateAboutUsDTO.Image.SaveFileAndReturnName(FilePath.AboutUsImageUploadPath);
+					string ImageName = UpdateAboutUsDTO.File.SaveFileAndReturnName(FilePath.AboutUsImageUploadPath);
 
 					AboutUs.ImageName = ImageName;
 				}
