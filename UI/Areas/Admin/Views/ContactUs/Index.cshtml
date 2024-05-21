@@ -1,0 +1,52 @@
+﻿@model ContactUsDTO
+@{
+    ViewData["Title"] = "تماس با ما";
+    ViewData["selected"] = "ContactUs_Index";
+}
+
+<section>
+    <div class="row">
+        <div class="col-12 col-sm-12 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+            <a href="/Admin/ContactUs/Update/@Model.Id" class="btn btn-sm btn-warning  mr-25">ویرایش <i class="bx bx-edit"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <table class="table table-borderless line-height-2">
+                            <tbody>
+                                <tr>
+                                    <td>توضیجات:</td>
+                                    <td>@Model.Description</td>
+                                </tr>
+
+                                <tr>
+                                    <td>ایمیل:</td>
+                                    <td>@Model.Email</td>
+                                </tr>
+
+                                <tr>
+                                    <td>شماره تماس:</td>
+                                    <td>@Model.Number</td>
+                                </tr>
+
+                                <tr>
+                                    <td>متا تایتل:</td>
+                                    <td>@Model.MetaTitle</td>
+                                </tr>
+
+                                <tr>
+                                    <td>متا دسکریپشن:</td>
+                                    <td>@Model.MetaDescription</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

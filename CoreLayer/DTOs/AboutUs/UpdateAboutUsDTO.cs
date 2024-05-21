@@ -11,10 +11,10 @@ namespace CoreLayer.DTOs.AboutUs
 		public string Description { get; set; }
 
 		[Display(Name = "تصویر فعلی")]
-		public string ImageName { get; set; }
+		public string CurrentImageName { get; set; }
 
 		[Display(Name = "تصویر جدید")]
-		public IFormFile Image { get; set; }
+		public IFormFile File { get; set; }
 
 		[Display(Name = "مجموع مشتریان")]
 		public string TotalCustomer { get; set; }

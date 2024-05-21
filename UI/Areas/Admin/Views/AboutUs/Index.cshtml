@@ -1,0 +1,61 @@
+﻿@model AboutUsDTO
+@{
+    ViewData["Title"] = "درباره ما";
+    ViewData["selected"] = "AboutUs_Index";
+}
+
+<section>
+    <div class="row">
+        <div class="col-12 col-sm-12 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
+            <a href="/Admin/AboutUs/Update/@Model.Id" class="btn btn-sm btn-warning  mr-25">ویرایش <i class="bx bx-edit"></i></a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <table class="table table-borderless line-height-2">
+                            <tbody>
+                                <tr>
+                                    <td>تصویر:</td>
+                                    <td>
+                                        <div class="avatar bg-rgba-primary p-25 mr-2 ml-0">
+                                            <img class="img-fluid" src="@FilePath.CommentImagePath@Model.ImageName" height="70" width="70">
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>توضیجات:</td>
+                                    <td>@Model.Description</td>
+                                </tr>
+
+                                <tr>
+                                    <td>مجموع مشتریان:</td>
+                                    <td>@Model.TotalCustomer</td>
+                                </tr>
+
+                                <tr>
+                                    <td>مجموع پروژه های انجام شده ::</td>
+                                    <td>@Model.TotalDoneProject</td>
+                                </tr>
+
+                                <tr>
+                                    <td>متا تایتل:</td>
+                                    <td>@Model.MetaTitle</td>
+                                </tr>
+
+                                <tr>
+                                    <td>متا دسکریپشن:</td>
+                                    <td>@Model.MetaDescription</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

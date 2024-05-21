@@ -6,73 +6,75 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-	public class AboutUsController : BaseController
-	{
-		#region (Dependency injection)
-		private readonly IAboutUsService _AboutUsService;
-		private readonly IMapper _Mapper;
-		public AboutUsController(IAboutUsService AboutUsService, IMapper Mapper)
-		{
-			_AboutUsService = AboutUsService;
-			_Mapper = Mapper;
-		}
-		#endregion
+    public class AboutUsController : BaseController
+    {
+        #region (Dependency injection)
+        private readonly IAboutUsService _AboutUsService;
+        private readonly IMapper _Mapper;
+        public AboutUsController(IAboutUsService AboutUsService, IMapper Mapper)
+        {
+            _AboutUsService = AboutUsService;
+            _Mapper = Mapper;
+        }
+        #endregion
 
-		#region (Index)
-		[HttpGet("Admin/AboutUs")]
-		public async Task<IActionResult> Index()
-		{
-			AboutUsDTO AboutUsDTO = await _AboutUsService.GetAboutUs();
+        #region (Index)
+        [HttpGet("Admin/AboutUs")]
+        public async Task<IActionResult> Index()
+        {
+            AboutUsDTO AboutUsDTO = await _AboutUsService.GetAboutUs();
 
-			return View(AboutUsDTO);
-		}
-		#endregion
+            return View(AboutUsDTO);
+        }
+        #endregion
 
-		#region (Update)
-		#region (Get)
-		[HttpGet("Admin/AboutUs/Update/{Id}")]
-		public async Task<IActionResult> UpdateAboutUs(int Id)
-		{
-			AboutUs AboutUs = await _AboutUsService.GetAboutUsById(Id);
+        #region (Update)
+        #region (Get)
+        [HttpGet("Admin/AboutUs/Update/{Id}")]
+        public async Task<IActionResult> UpdateAboutUs(int Id)
+        {
+            AboutUs AboutUs = await _AboutUsService.GetAboutUsById(Id);
 
-			if (AboutUs == null)
-			{
-				return NotFound();
-			}
+            if (AboutUs == null)
+            {
+                return NotFound();
+            }
 
-			UpdateAboutUsDTO UpdateAboutUsDTO = _Mapper.Map<UpdateAboutUsDTO>(AboutUs);
+            UpdateAboutUsDTO UpdateAboutUsDTO = _Mapper.Map<UpdateAboutUsDTO>(AboutUs);
 
-			return View(UpdateAboutUsDTO);
-		}
-		#endregion
+            UpdateAboutUsDTO.CurrentImageName = AboutUs.ImageName;
 
-		#region (Post)
-		[HttpPost("Admin/AboutUs/Update/{Id}")]
-		public async Task<IActionResult> UpdateAboutUs(UpdateAboutUsDTO UpdateAboutUsDTO)
-		{
-			if (!ModelState.IsValid)
-			{
-				#region (Client Side Error)
-				return View(UpdateAboutUsDTO);
-				#endregion
-			}
+            return View(UpdateAboutUsDTO);
+        }
+        #endregion
 
-			UpdateAboutUsResult Result = await _AboutUsService.UpdateAboutUs(UpdateAboutUsDTO);
+        #region (Post)
+        [HttpPost("Admin/AboutUs/Update/{Id}")]
+        public async Task<IActionResult> UpdateAboutUs(UpdateAboutUsDTO UpdateAboutUsDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                #region (Client Side Error)
+                return View(UpdateAboutUsDTO);
+                #endregion
+            }
 
-			switch (Result)
-			{
-				case UpdateAboutUsResult.Success:
-					SuccessAlert();
+            UpdateAboutUsResult Result = await _AboutUsService.UpdateAboutUs(UpdateAboutUsDTO);
 
-					return RedirectToAction("Index");
-				case UpdateAboutUsResult.Error:
-					ErrorAlert();
-					break;
-			}
+            switch (Result)
+            {
+                case UpdateAboutUsResult.Success:
+                    SuccessAlert();
 
-			return View(UpdateAboutUsDTO);
-		}
-		#endregion
-		#endregion
-	}
+                    return RedirectToAction("Index");
+                case UpdateAboutUsResult.Error:
+                    ErrorAlert();
+                    break;
+            }
+
+            return View(UpdateAboutUsDTO);
+        }
+        #endregion
+        #endregion
+    }
 }

@@ -1,0 +1,98 @@
+﻿@model UpdateContactUsDTO;
+@{
+    ViewData["Title"] = "ویرایش صفحه تماس با ما";
+    ViewData["selected"] = "ContactUs_Index";
+}
+<section>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs mb-2">
+                    <li class="nav-item current">
+                        <a class="nav-link d-flex align-items-center active">
+                            <i class='bx bx-phone-call'></i><span class="d-none d-sm-block">تماس با ما</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <form method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label asp-for="Description"></label>
+                                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                                        <div class="help-block">
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="Email"></label>
+                                            <input asp-for="Email" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="Number"></label>
+                                            <input asp-for="Number" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="Number" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="MetaTitle"></label>
+                                            <input asp-for="MetaTitle" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="MetaDescription"></label>
+                                            <input asp-for="MetaDescription" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+                                    <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">ذخیره</button>
+                                    <button onclick="history.back()" type="reset" class="btn btn-light">انصراف</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
