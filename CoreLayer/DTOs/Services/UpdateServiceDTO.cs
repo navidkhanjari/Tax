@@ -8,10 +8,10 @@ namespace CoreLayer.DTOs.Services
 		public int Id { get; set; }
 
 		[Display(Name = "آیکن فعلی")]
-		public string IconName { get; set; }
+		public string CurrentIconName { get; set; }
 
 		[Display(Name = "آیکن جدید")]
-		public IFormFile Icon { get; set; }
+		public IFormFile File { get; set; }
 
 		[Display(Name = "عنوان")]
 		[MaxLength(100, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد!")]

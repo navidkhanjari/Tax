@@ -1,7 +1,7 @@
-﻿@model CreateSliderDTO;
+﻿@model UpdateServiceDTO;
 @{
-    ViewData["Title"] = "ثبت اسلایدر جدید";
-    ViewData["selected"] = "Sliders_Create";
+    ViewData["Title"] = "ویرایش خدمات";
+    ViewData["selected"] = "Services_Index";
 }
 <section>
     <div class="card">
@@ -10,21 +10,22 @@
                 <ul class="nav nav-tabs mb-2">
                     <li class="nav-item current">
                         <a class="nav-link d-flex align-items-center active">
-                            <i class="bx bx-image"></i><span class="d-none d-sm-block">اسلایدر</span>
+                            <i class='bx bxs-calculator'></i><span class="d-none d-sm-block">خدمات</span>
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active">
                         <form method="post" enctype="multipart/form-data">
-
+                            <input type="hidden" asp-for="Id" />
                             <div class="card-title-details d-flex align-items-center mb-1 ml-1">
                                 <div class="avatar bg-rgba-primary p-25 mr-2 ml-0">
-                                    <img id="Selected-Image" class="img-fluid" src="~/Admin/images/ProductPlaceHolder.jpg" height="70" width="70">
+                                    <img id="Selected-Image" class="img-fluid" src="@FilePath.ServiceImagePath@Model.CurrentIconName" height="70" width="70">
                                 </div>
                                 <div class="mt-n25">
-                                    <h5>تصویر انتخاب شده</h5>
-                                    <p class="text-info">سایز : 00 در 00 </p>
+                                    <h5>تصویر خدمات</h5>
+                                    <p class="text-info">00 * 00</p>
+                                    <div class="card-subtitle text-danger">درصورت وارد کردن تصویر جدید تصویر فعلی حذف میشود</div>
                                 </div>
                             </div>
 
@@ -33,35 +34,23 @@
                                     <fieldset>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input asp-for="Image" type="file" class="custom-file-input" accept="image/jpeg">
+                                                <input asp-for="File" type="file" class="custom-file-input">
                                                 <label class="custom-file-label">انتخاب تصویر</label>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="help-block">
-                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                        <span asp-validation-for="File" class="text-danger"></span>
                                     </div>
                                 </div>
 
-                                <div class="col-6 col-sm-6 col-lg-6">
+                                <div class="col-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="controls">
                                             <label asp-for="Title"></label>
                                             <input asp-for="Title" type="text" class="form-control text-left">
                                             <div class="help-block">
                                                 <span asp-validation-for="Title" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-sm-6 col-lg-6">
-                                    <div class="form-group">
-                                        <div class="controls">
-                                            <label asp-for="Domain"></label>
-                                            <input asp-for="Domain" type="text" class="form-control text-right">
-                                            <div class="help-block">
-                                                <span asp-validation-for="Domain" class="text-danger"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +108,7 @@
             }
         }
 
-        $("#Image").change(function () {
+        $("#File").change(function () {
             readURL(this);
         });
     </script>

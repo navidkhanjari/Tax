@@ -150,7 +150,7 @@ namespace CoreLayer.Services.Implementation
 
 				_Mapper.Map(UpdateServiceDTO, Service);
 
-				if (UpdateServiceDTO.Icon != null)
+				if (UpdateServiceDTO.File != null)
 				{
 					//delete old icon
 					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.ServiceImagePath, Service.IconName);
@@ -160,7 +160,7 @@ namespace CoreLayer.Services.Implementation
 						File.Delete(ImagePath);
 					}
 
-					string IconName = UpdateServiceDTO.Icon.SaveFileAndReturnName(FilePath.ServiceImageUploadPath);
+					string IconName = UpdateServiceDTO.File.SaveFileAndReturnName(FilePath.ServiceImageUploadPath);
 
 					Service.IconName = IconName;
 				}

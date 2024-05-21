@@ -67,7 +67,7 @@ namespace UI.Areas.Admin.Controllers
 
 		#region (Update)
 		#region (Get)
-		[HttpGet("Admin/Service/Update/{Id}")]
+		[HttpGet("Admin/Services/Update/{Id}")]
 		public async Task<IActionResult> UpdateService(int Id)
 		{
 			Service Service = await _ServiceService.GetServiceById(Id);
@@ -79,12 +79,14 @@ namespace UI.Areas.Admin.Controllers
 
 			UpdateServiceDTO UpdateServiceDTO = _Mapper.Map<UpdateServiceDTO>(Service);
 
+			UpdateServiceDTO.CurrentIconName = Service.IconName;
+
 			return View(UpdateServiceDTO);
 		}
 		#endregion
 
 		#region (Service)
-		[HttpPost("Admin/Service/Update/{Id}")]
+		[HttpPost("Admin/Services/Update/{Id}")]
 		public async Task<IActionResult> UpdateService(UpdateServiceDTO UpdateServiceDTO)
 		{
 			if (!ModelState.IsValid)

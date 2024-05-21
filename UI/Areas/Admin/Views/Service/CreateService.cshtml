@@ -1,7 +1,7 @@
-﻿@model CreateSliderDTO;
+﻿@model CreateServiceDTO;
 @{
-    ViewData["Title"] = "ثبت اسلایدر جدید";
-    ViewData["selected"] = "Sliders_Create";
+    ViewData["Title"] = "ثبت خدمات جدید";
+    ViewData["selected"] = "Services_Create";
 }
 <section>
     <div class="card">
@@ -10,7 +10,7 @@
                 <ul class="nav nav-tabs mb-2">
                     <li class="nav-item current">
                         <a class="nav-link d-flex align-items-center active">
-                            <i class="bx bx-image"></i><span class="d-none d-sm-block">اسلایدر</span>
+                            <i class='bx bxs-calculator'></i><span class="d-none d-sm-block">خدمات</span>
                         </a>
                     </li>
                 </ul>
@@ -33,35 +33,23 @@
                                     <fieldset>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input asp-for="Image" type="file" class="custom-file-input" accept="image/jpeg">
+                                                <input asp-for="Icon" type="file" class="custom-file-input" accept="image/jpeg">
                                                 <label class="custom-file-label">انتخاب تصویر</label>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="help-block">
-                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                        <span asp-validation-for="Icon" class="text-danger"></span>
                                     </div>
                                 </div>
 
-                                <div class="col-6 col-sm-6 col-lg-6">
+                                <div class="col-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
                                         <div class="controls">
                                             <label asp-for="Title"></label>
                                             <input asp-for="Title" type="text" class="form-control text-left">
                                             <div class="help-block">
                                                 <span asp-validation-for="Title" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 col-sm-6 col-lg-6">
-                                    <div class="form-group">
-                                        <div class="controls">
-                                            <label asp-for="Domain"></label>
-                                            <input asp-for="Domain" type="text" class="form-control text-right">
-                                            <div class="help-block">
-                                                <span asp-validation-for="Domain" class="text-danger"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +107,7 @@
             }
         }
 
-        $("#Image").change(function () {
+        $("#Icon").change(function () {
             readURL(this);
         });
     </script>
