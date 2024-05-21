@@ -1,7 +1,7 @@
-﻿@model CreateServiceDTO;
+﻿@model CreateCommentDTO;
 @{
-    ViewData["Title"] = "ثبت خدمات جدید";
-    ViewData["selected"] = "Services_Index";
+    ViewData["Title"] = "ثبت نظر جدید";
+    ViewData["selected"] = "Comments_Index";
 }
 <section>
     <div class="card">
@@ -10,7 +10,7 @@
                 <ul class="nav nav-tabs mb-2">
                     <li class="nav-item current">
                         <a class="nav-link d-flex align-items-center active">
-                            <i class='bx bxs-calculator'></i><span class="d-none d-sm-block">خدمات</span>
+                            <i class='bx bx-comment'></i><span class="d-none d-sm-block">نظر</span>
                         </a>
                     </li>
                 </ul>
@@ -33,23 +33,35 @@
                                     <fieldset>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input asp-for="Icon" type="file" class="custom-file-input" accept="image/jpeg">
+                                                <input asp-for="CustomerImage" type="file" class="custom-file-input" accept="image/jpeg">
                                                 <label class="custom-file-label">انتخاب تصویر</label>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="help-block">
-                                        <span asp-validation-for="Icon" class="text-danger"></span>
+                                        <span asp-validation-for="CustomerImage" class="text-danger"></span>
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-lg-12">
+                                <div class="col-6 col-sm-6 col-lg-6">
                                     <div class="form-group">
                                         <div class="controls">
-                                            <label asp-for="Title"></label>
-                                            <input asp-for="Title" type="text" class="form-control text-left">
+                                            <label asp-for="CustomerFullName"></label>
+                                            <input asp-for="CustomerFullName" type="text" class="form-control text-left">
                                             <div class="help-block">
-                                                <span asp-validation-for="Title" class="text-danger"></span>
+                                                <span asp-validation-for="CustomerFullName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="Jobtitle"></label>
+                                            <input asp-for="Jobtitle" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="Jobtitle" class="text-danger"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -57,10 +69,10 @@
 
                                 <div class="col-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
-                                        <label asp-for="Description"></label>
-                                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                                        <label asp-for="Text"></label>
+                                        <textarea class="form-control" asp-for="Text" rows="3"></textarea>
                                         <div class="help-block">
-                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                            <span asp-validation-for="Text" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +119,7 @@
             }
         }
 
-        $("#Icon").change(function () {
+        $("#CustomerImage").change(function () {
             readURL(this);
         });
     </script>

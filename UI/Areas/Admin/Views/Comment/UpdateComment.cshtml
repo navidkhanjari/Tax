@@ -1,7 +1,7 @@
-﻿@model CreateServiceDTO;
+﻿@model UpdateCommentDTO;
 @{
-    ViewData["Title"] = "ثبت خدمات جدید";
-    ViewData["selected"] = "Services_Index";
+    ViewData["Title"] = "ویرایش نظر";
+    ViewData["selected"] = "Comments_Index";
 }
 <section>
     <div class="card">
@@ -10,21 +10,22 @@
                 <ul class="nav nav-tabs mb-2">
                     <li class="nav-item current">
                         <a class="nav-link d-flex align-items-center active">
-                            <i class='bx bxs-calculator'></i><span class="d-none d-sm-block">خدمات</span>
+                            <i class='bx bx-comment'></i><span class="d-none d-sm-block">نظر</span>
                         </a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active">
                         <form method="post" enctype="multipart/form-data">
-
+                            <input type="hidden" asp-for="Id" />
                             <div class="card-title-details d-flex align-items-center mb-1 ml-1">
                                 <div class="avatar bg-rgba-primary p-25 mr-2 ml-0">
-                                    <img id="Selected-Image" class="img-fluid" src="~/Admin/images/ProductPlaceHolder.jpg" height="70" width="70">
+                                    <img id="Selected-Image" class="img-fluid" src="@FilePath.CommentImagePath@Model.CurrentCustomerImageName" height="70" width="70">
                                 </div>
                                 <div class="mt-n25">
-                                    <h5>تصویر انتخاب شده</h5>
-                                    <p class="text-info">سایز : 00 در 00 </p>
+                                    <h5>تصویر مشتری</h5>
+                                    <p class="text-info">00 * 00</p>
+                                    <div class="card-subtitle text-danger">درصورت وارد کردن تصویر جدید تصویر فعلی حذف میشود</div>
                                 </div>
                             </div>
 
@@ -33,23 +34,35 @@
                                     <fieldset>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input asp-for="Icon" type="file" class="custom-file-input" accept="image/jpeg">
+                                                <input asp-for="File" type="file" class="custom-file-input">
                                                 <label class="custom-file-label">انتخاب تصویر</label>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="help-block">
-                                        <span asp-validation-for="Icon" class="text-danger"></span>
+                                        <span asp-validation-for="File" class="text-danger"></span>
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-lg-12">
+                                <div class="col-6 col-sm-6 col-lg-6">
                                     <div class="form-group">
                                         <div class="controls">
-                                            <label asp-for="Title"></label>
-                                            <input asp-for="Title" type="text" class="form-control text-left">
+                                            <label asp-for="CustomerFullName"></label>
+                                            <input asp-for="CustomerFullName" type="text" class="form-control text-left">
                                             <div class="help-block">
-                                                <span asp-validation-for="Title" class="text-danger"></span>
+                                                <span asp-validation-for="CustomerFullName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="Jobtitle"></label>
+                                            <input asp-for="Jobtitle" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="Jobtitle" class="text-danger"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -57,10 +70,10 @@
 
                                 <div class="col-12 col-sm-12 col-lg-12">
                                     <div class="form-group">
-                                        <label asp-for="Description"></label>
-                                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                                        <label asp-for="Text"></label>
+                                        <textarea class="form-control" asp-for="Text" rows="3"></textarea>
                                         <div class="help-block">
-                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                            <span asp-validation-for="Text" class="text-danger"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +120,7 @@
             }
         }
 
-        $("#Icon").change(function () {
+        $("#File").change(function () {
             readURL(this);
         });
     </script>

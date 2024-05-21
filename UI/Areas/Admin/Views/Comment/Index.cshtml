@@ -1,0 +1,70 @@
+﻿@model List<CommentsDTO>
+@{
+    ViewData["Title"] = "نظرات مشتریان";
+    ViewData["selected"] = "Comments_Index";
+}
+
+<a href="/Admin/Comments/Create" class="btn btn-success mb-2"> افزودن نظر جدید <i class="bx bx-plus"></i></a>
+
+<section>
+    <div class="card">
+        <div class="table-responsive">
+            <div class="dataTables_wrapper no-footer">
+                <table class="table mb-0 table-striped table-hover no-footer">
+                    <thead class="thead-dark">
+                        <tr role="row">
+                            <th>تصویر مشتری</th>
+                            <th>نام</th>
+                            <th>عنوان شغلی</th>
+                            <th>نظر</th>
+                            <th>نمایش در سایت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var Comment in Model)
+                            {
+                                <tr role="row" class="odd">
+                                    @if (Comment.CustomerImageName != null)
+                                    {
+                                        <td class="text-bold-700">
+                                            <img class="rounded-circle mr-1" src="@FilePath.CommentImagePath@Comment.CustomerImageName" height="70" width="70">
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>تصویر وارد نشده</td>
+                                    }
+
+                                    <td>@Comment.CustomerFullName</td>
+                                    <td>@Comment.Jobtitle</td>
+                                    <td>@Comment.Text</td>
+                                    @if (Comment.Visible)
+                                    {
+                                        <td><i class='bx bx-checkbox-checked text-success'></i></td>
+                                    }
+                                    else
+                                    {
+                                        <td><i class='bx bxs-x-square text-danger'></i></td>
+                                    }
+                                    <td>
+                                        <a title="ویرایش" href="/Admin/Comments/Update/@Comment.Id"><i class="bx bxs-edit-alt text-warning"></i></a>
+                                        <a title="جزییات" href="/Admin/Comments/Detail/@Comment.Id"><i class="bx bx-detail text-secondary"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">موردی برای نمایش وجود ندارد</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

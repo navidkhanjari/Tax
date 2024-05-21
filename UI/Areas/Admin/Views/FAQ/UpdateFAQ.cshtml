@@ -1,0 +1,74 @@
+﻿@model UpdateFAQDTO;
+@{
+    ViewData["Title"] = "ویرایش سوال و پاسخ";
+    ViewData["selected"] = "FAQs_Index";
+}
+<section>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs mb-2">
+                    <li class="nav-item current">
+                        <a class="nav-link d-flex align-items-center active">
+                            <i class='bx bx-question-mark'></i><span class="d-none d-sm-block">سوال و پاسخ</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <form method="post">
+
+                            <div class="row">
+
+                                <div class="col-12 col-sm-12 col-lg-12">
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <label asp-for="Question"></label>
+                                            <input asp-for="Question" type="text" class="form-control text-left">
+                                            <div class="help-block">
+                                                <span asp-validation-for="Question" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label asp-for="Answer"></label>
+                                        <textarea class="form-control" asp-for="Answer" rows="3"></textarea>
+                                        <div class="help-block">
+                                            <span asp-validation-for="Answer" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 col-sm-6 col-lg-6">
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <input asp-for="Visible" type="checkbox" class="checkbox-input">
+                                            <label asp-for="Visible"></label>
+                                            <div class="help-block">
+                                                <span asp-validation-for="Visible" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
+                                    <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">ذخیره</button>
+                                    <button onclick="history.back()" type="reset" class="btn btn-light">انصراف</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

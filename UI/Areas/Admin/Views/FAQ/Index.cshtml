@@ -1,0 +1,56 @@
+﻿@model List<FAQs>
+@{
+    ViewData["Title"] = "سوالات متداول";
+    ViewData["selected"] = "FAQs_Index";
+}
+
+<a href="/Admin/FAQs/Create" class="btn btn-success mb-2"> افزودن سوال و پاسخ جدید <i class="bx bx-plus"></i></a>
+
+<section>
+    <div class="card">
+        <div class="table-responsive">
+            <div class="dataTables_wrapper no-footer">
+                <table class="table mb-0 table-striped table-hover no-footer">
+                    <thead class="thead-dark">
+                        <tr role="row">
+                            <th>سوال</th>
+                            <th>پاسخ</th>
+                            <th>نمایش در سایت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var FAQ in Model)
+                            {
+                                <tr role="row" class="odd">
+
+                                    <td>@FAQ.Question</td>
+                                    <td>@FAQ.Answer</td>
+                                    @if (FAQ.Visible)
+                                    {
+                                        <td><i class='bx bx-checkbox-checked text-success'></i></td>
+                                    }
+                                    else
+                                    {
+                                        <td><i class='bx bxs-x-square text-danger'></i></td>
+                                    }
+                                    <td>
+                                        <a title="ویرایش" href="/Admin/FAQs/Update/@FAQ.Id"><i class="bx bxs-edit-alt text-warning"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center">موردی برای نمایش وجود ندارد</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

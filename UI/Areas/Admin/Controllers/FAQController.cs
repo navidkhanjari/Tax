@@ -68,7 +68,7 @@ namespace UI.Areas.Admin.Controllers
 
 		#region (Update)
 		#region (Get)
-		[HttpGet("Admin/FAQ/Update/{Id}")]
+		[HttpGet("Admin/FAQs/Update/{Id}")]
 		public async Task<IActionResult> UpdateFAQ(int Id)
 		{
 			FAQs FAQ = await _FAQService.GetFAQById(Id);
@@ -85,7 +85,7 @@ namespace UI.Areas.Admin.Controllers
 		#endregion
 
 		#region (Post)
-		[HttpPost("Admin/FAQ/Update/{Id}")]
+		[HttpPost("Admin/FAQs/Update/{Id}")]
 		public async Task<IActionResult> UpdateFAQ(UpdateFAQDTO UpdateFAQDTO)
 		{
 			if (!ModelState.IsValid)

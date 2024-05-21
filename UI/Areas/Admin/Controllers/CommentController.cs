@@ -6,157 +6,159 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-	public class CommentController : BaseController
-	{
-		#region (Dependency injection)
-		private readonly ICommentService _CommentService;
-		private readonly IMapper _Mapper;
-		public CommentController(ICommentService CommentService, IMapper Mapper)
-		{
-			_CommentService = CommentService;
-			_Mapper = Mapper;
-		}
-		#endregion
+    public class CommentController : BaseController
+    {
+        #region (Dependency injection)
+        private readonly ICommentService _CommentService;
+        private readonly IMapper _Mapper;
+        public CommentController(ICommentService CommentService, IMapper Mapper)
+        {
+            _CommentService = CommentService;
+            _Mapper = Mapper;
+        }
+        #endregion
 
-		#region (Index)
-		[HttpGet("Admin/Comments")]
-		public async Task<IActionResult> Index()
-		{
-			List<CommentsDTO> CommentsDTO = await _CommentService.GetComments();
+        #region (Index)
+        [HttpGet("Admin/Comments")]
+        public async Task<IActionResult> Index()
+        {
+            List<CommentsDTO> CommentsDTO = await _CommentService.GetComments();
 
-			return View(CommentsDTO);
-		}
-		#endregion
+            return View(CommentsDTO);
+        }
+        #endregion
 
-		#region (Create)
-		#region (Get)
-		[HttpGet("Admin/Comments/Create")]
-		public IActionResult CreateComment()
-		{
-			return View();
-		}
-		#endregion
+        #region (Create)
+        #region (Get)
+        [HttpGet("Admin/Comments/Create")]
+        public IActionResult CreateComment()
+        {
+            return View();
+        }
+        #endregion
 
-		#region (Post)
-		[HttpPost("Admin/Comments/Create")]
-		public async Task<IActionResult> CreateComment(CreateCommentDTO CreateCommentDTO)
-		{
-			if (!ModelState.IsValid)
-			{
-				#region (Client Side Error)
-				return View(CreateCommentDTO);
-				#endregion
-			}
+        #region (Post)
+        [HttpPost("Admin/Comments/Create")]
+        public async Task<IActionResult> CreateComment(CreateCommentDTO CreateCommentDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                #region (Client Side Error)
+                return View(CreateCommentDTO);
+                #endregion
+            }
 
-			CreateCommentResult Result = await _CommentService.CreateComment(CreateCommentDTO);
+            CreateCommentResult Result = await _CommentService.CreateComment(CreateCommentDTO);
 
-			switch (Result)
-			{
-				case CreateCommentResult.Success:
-					SuccessAlert();
-					return RedirectToAction("Index");
-				case CreateCommentResult.Error:
-					ErrorAlert();
-					break;
-			}
+            switch (Result)
+            {
+                case CreateCommentResult.Success:
+                    SuccessAlert();
+                    return RedirectToAction("Index");
+                case CreateCommentResult.Error:
+                    ErrorAlert();
+                    break;
+            }
 
-			return View(CreateCommentDTO);
-		}
-		#endregion
-		#endregion
+            return View(CreateCommentDTO);
+        }
+        #endregion
+        #endregion
 
-		#region (Update)
-		#region (Get)
-		[HttpGet("Admin/Comment/Update/{Id}")]
-		public async Task<IActionResult> UpdateComment(int Id)
-		{
-			Comment Comment = await _CommentService.GetCommentById(Id);
+        #region (Update)
+        #region (Get)
+        [HttpGet("Admin/Comments/Update/{Id}")]
+        public async Task<IActionResult> UpdateComment(int Id)
+        {
+            Comment Comment = await _CommentService.GetCommentById(Id);
 
-			if (Comment == null)
-			{
-				return NotFound();
-			}
+            if (Comment == null)
+            {
+                return NotFound();
+            }
 
-			UpdateCommentDTO UpdateCommentDTO = _Mapper.Map<UpdateCommentDTO>(Comment);
+            UpdateCommentDTO UpdateCommentDTO = _Mapper.Map<UpdateCommentDTO>(Comment);
 
-			return View(UpdateCommentDTO);
-		}
-		#endregion
+            UpdateCommentDTO.CurrentCustomerImageName = Comment.CustomerImageName;
 
-		#region (Post)
-		[HttpPost("Admin/Comment/Update/{Id}")]
-		public async Task<IActionResult> UpdateComment(UpdateCommentDTO UpdateCommentDTO)
-		{
-			if (!ModelState.IsValid)
-			{
-				#region (Client Side Error)
-				return View(UpdateCommentDTO);
-				#endregion
-			}
+            return View(UpdateCommentDTO);
+        }
+        #endregion
 
-			UpdateCommentResult Result = await _CommentService.UpdateComment(UpdateCommentDTO);
+        #region (Post)
+        [HttpPost("Admin/Comments/Update/{Id}")]
+        public async Task<IActionResult> UpdateComment(UpdateCommentDTO UpdateCommentDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                #region (Client Side Error)
+                return View(UpdateCommentDTO);
+                #endregion
+            }
 
-			switch (Result)
-			{
-				case UpdateCommentResult.Success:
-					SuccessAlert();
+            UpdateCommentResult Result = await _CommentService.UpdateComment(UpdateCommentDTO);
 
-					return RedirectToAction("Index");
-				case UpdateCommentResult.Error:
-					ErrorAlert();
-					break;
-			}
+            switch (Result)
+            {
+                case UpdateCommentResult.Success:
+                    SuccessAlert();
 
-			return View(UpdateCommentDTO);
-		}
-		#endregion
-		#endregion
+                    return RedirectToAction("Index");
+                case UpdateCommentResult.Error:
+                    ErrorAlert();
+                    break;
+            }
 
-		#region (Delete)
-		#region (Post)
-		[HttpPost("Admin/Comments/Delete/{Id}")]
-		public async Task<IActionResult> DeleteComment(int Id)
-		{
-			Comment Comment = await _CommentService.GetCommentById(Id);
+            return View(UpdateCommentDTO);
+        }
+        #endregion
+        #endregion
 
-			if (Comment == null)
-			{
-				return NotFound();
-			}
+        #region (Delete)
+        #region (Post)
+        [HttpPost("Admin/Comments/Delete/{Id}")]
+        public async Task<IActionResult> DeleteComment(int Id)
+        {
+            Comment Comment = await _CommentService.GetCommentById(Id);
 
-			bool Result = await _CommentService.Delete(Comment);
+            if (Comment == null)
+            {
+                return NotFound();
+            }
 
-			if (Result)
-			{
-				SuccessAlert();
-			}
-			else
-			{
-				ErrorAlert();
-			}
+            bool Result = await _CommentService.Delete(Comment);
 
-			return RedirectToAction("Index");
-		}
-		#endregion
-		#endregion
+            if (Result)
+            {
+                SuccessAlert();
+            }
+            else
+            {
+                ErrorAlert();
+            }
 
-		#region (Detail)
-		#region (Get)
-		[HttpGet("Admin/Comments/Detail/{Id}")]
-		public async Task<IActionResult> DetailComment(int Id)
-		{
-			Comment Comment = await _CommentService.GetCommentById(Id);
+            return RedirectToAction("Index");
+        }
+        #endregion
+        #endregion
 
-			if (Comment == null)
-			{
-				return NotFound();
-			}
+        #region (Detail)
+        #region (Get)
+        [HttpGet("Admin/Comments/Detail/{Id}")]
+        public async Task<IActionResult> DetailComment(int Id)
+        {
+            Comment Comment = await _CommentService.GetCommentById(Id);
 
-			CommentsDTO CommentDTO = _Mapper.Map<CommentsDTO>(Comment);
+            if (Comment == null)
+            {
+                return NotFound();
+            }
 
-			return View(CommentDTO);
-		}
-		#endregion
-		#endregion
-	}
+            CommentsDTO CommentDTO = _Mapper.Map<CommentsDTO>(Comment);
+
+            return View(CommentDTO);
+        }
+        #endregion
+        #endregion
+    }
 }
