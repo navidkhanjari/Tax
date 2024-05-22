@@ -27,7 +27,7 @@ namespace CoreLayer.Services.Implementation
 		{
 			try
 			{
-				AboutUs AboutUs = await _Context.AboutUs.LastAsync();
+				AboutUs AboutUs = await _Context.AboutUs.SingleOrDefaultAsync();
 
 				if (AboutUs != null)
 				{

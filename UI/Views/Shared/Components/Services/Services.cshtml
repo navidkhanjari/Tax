@@ -14,7 +14,7 @@
 	{
 		@if (Model.Count == 3)
 		{
-			<div class="d-flex flex-row ">
+			<div class="d-flex flex-row">
 				@foreach (var Service in Model)
 				{
 					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
@@ -29,7 +29,7 @@
 		}
 		else if (Model.Count == 6)
 		{
-			<div class="d-flex flex-row ">
+			<div class="d-flex flex-row">
 				@for (int Index = 0; Index <= 2; Index++)
 				{
 					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
@@ -42,7 +42,7 @@
 				}
 			</div>
 
-			<div class="d-flex flex-row ">
+			<div class="d-flex flex-row">
 				@for (int Index = 3; Index <= 5; Index++)
 				{
 					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">

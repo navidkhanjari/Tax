@@ -6,6 +6,7 @@ namespace CoreLayer.Services.Interfaces
 	public interface ISliderService
 	{
 		Task<List<SliderDTO>> GetSliders();
+		Task<List<SliderDTO>> GetSlidersForShow();
 		Task<Slider> GetSliderById(int Id);
 
 		Task<bool> Add(Slider Slider);
