@@ -111,7 +111,7 @@ namespace CoreLayer.Services.Implementation
                 Message.CreateDate = DateTime.Now;
 
                 await Add(Message);
-
+                
                 return CreateMessageResult.Success;
             }
             catch (Exception Exception)

@@ -11,7 +11,7 @@ namespace CoreLayer.DTOs.Messages
 
 		[Display(Name = "ایمیل")]
 		[MaxLength(300, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد!")]
-		[EmailAddress(ErrorMessage = "ایمیل وارد شده نا معتر است")]
+		[EmailAddress(ErrorMessage = "ایمیل وارد شده نا معتبر است")]
 		public string Email { get; set; }
 
 		[Display(Name = "شماره تماس")]
@@ -19,7 +19,7 @@ namespace CoreLayer.DTOs.Messages
 		[MaxLength(11, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد!")]
 		public string Number { get; set; }
 
-		[Display(Name = "توضیحات")]
+		[Display(Name = "متن پیام")]
 		[Required(ErrorMessage = "لطفا {0} را وارد نمایید")]
 		[MaxLength(600, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد!")]
 		public string Description { get; set; }

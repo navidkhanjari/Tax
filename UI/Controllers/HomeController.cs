@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using CoreLayer.Services.Interfaces;
 using CoreLayer.DTOs.User;
+using CoreLayer.DTOs.ContactUs;
+using CoreLayer.DTOs.Messages;
 
 namespace UI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         #region (Field)
         public string ReturnUrl { get; set; }
@@ -16,9 +18,13 @@ namespace UI.Controllers
 
         #region (Dependency Injection)
         private readonly IUserService _UserService;
-        public HomeController(IUserService UserService)
+        private readonly IContactUsService _ContactUsService;
+        private readonly IMessageService _MessageService;
+        public HomeController(IUserService UserService, IContactUsService ContactUsService, IMessageService MessageService)
         {
             this._UserService = UserService;
+            this._ContactUsService = ContactUsService;
+            this._MessageService = MessageService;
         }
         #endregion
 
@@ -84,6 +90,41 @@ namespace UI.Controllers
             ModelState.AddModelError("UserName", "نام کاربری یا کلمه عبور اشتباه است!");
 
             return View(User);
+        }
+        #endregion
+        #endregion
+
+        #region (Contact Us)
+        #region (Get)
+        [HttpGet("contact-us")]
+        public async Task<IActionResult> ContactUs()
+        {
+            ContactUsDTO ContactUsDTO = await _ContactUsService.GetContactUs();
+
+            return View(ContactUsDTO);
+        }
+        #endregion
+
+        #region (Post)
+        [HttpPost("contact-us")]
+        public async Task<IActionResult> ContactUs(CreateMessageDTO CreateMessageDTO)
+        {
+            CreateMessageResult Result = await _MessageService.CreateMessage(CreateMessageDTO);
+
+            switch (Result)
+            {
+                case CreateMessageResult.Success:
+                    SuccessAlert("پیام شما ارسال شد");
+
+                    // Send Email To Admin
+
+                    break;
+                case CreateMessageResult.Error:
+                    ErrorAlert();
+                    break;
+            }
+
+            return RedirectToAction("ContactUs");
         }
         #endregion
         #endregion

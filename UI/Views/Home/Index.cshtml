@@ -1,8 +1,353 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
 }
+@section MainSlider {
+	@await Component.InvokeAsync("MainSlider")
+}
+@section Header {
+	@await Component.InvokeAsync("Header")
+}
+@section Footer {
+	@await Component.InvokeAsync("Footer")
+}
+<div class="container mt-lg-4 pt-3">
+	<div class="row">
+		<div class="col-lg-4 d-lg-block d-none text-center">
+			<img src="/site/Img/461.png" class="justify-content-center" />
+			<img src="/site/Img/Divar4.jpg" class="img-fluid radius15 servicimg" />
+		</div>
+		<div class="col-lg-8 col-md-12 p-3 mt-4 d2-service">
+			<div class="d-flex flex-row mb-3">
+				<div class="Dottedstocol ml-3"></div>
+				<div class="singletitle">
+					<span>درباره ما</span>
+					<h1 class="text-right">معرفی خدمات ما </h1>
+				</div>
+			</div>
+			<p class="text-justify mb-3">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+			<div class="d-flex flex-row ">
+				<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+					<i class="fal fa-trophy  fa-3x ml-3 py-2 text-warning"></i>
+					<div>
+						<h2>کد نویسی تمیز</h2>
+						<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+					</div>
+				</div>
+				<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+					<i class="fal fa-cogs fa-3x ml-3 py-2 text-warning"></i>
+					<div>
+						<h2>طراحی ریسپانسیو</h2>
+						<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex  flex-row">
+				<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+					<i class="fal fa-thumbs-up fa-3x ml-3 py-2 text-warning"></i>
+					<div>
+						<h2>طراحی چشم نواز</h2>
+						<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+					</div>
+				</div>
+				<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+					<i class="fal fa-atom fa-3x ml-3 py-2 text-warning"></i>
+					<div>
+						<h2>کد نویسی استاندارد</h2>
+						<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
+
+<section class="container mt-5 po2 hot-posts text-center">
+
+	<h3 class="mt-2 mb-3 bt-center text-center IRANSans_Bold">آخرین پروژه ها</h3>
+	<div class="row pt-3">
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="Portfoilo_details.html" class="grid">
+				<figure class="effect-ruby">
+					<img src="/site/Img/Lotus-M-G-4.jpg" alt="img01" />
+					<figcaption>
+						<h2>پروژه دکتر محمدی</h2>
+						<p>جهت مشاهده اطلاعات کامل کلیک کنید </p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="Portfoilo_details.html" class="grid">
+				<figure class="effect-ruby">
+					<img src="/site/Img/Lotus-M-G-5.jpg" alt="img01" />
+					<figcaption>
+						<h2>پروژه برج الماس شهر</h2>
+						<p>جهت مشاهده اطلاعات کامل کلیک کنید </p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="Portfoilo_details.html" class="grid">
+				<figure class="effect-ruby">
+					<img src="/site/Img/Lotus-M-G-6.jpg" alt="img01" />
+					<figcaption>
+						<h2>پروژه بزرگراه فتح</h2>
+						<p>جهت مشاهده اطلاعات کامل کلیک کنید </p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="Portfoilo_details.html" class="grid">
+				<figure class="effect-ruby">
+					<img src="/site/Img/Lotus-M-G-7.jpg" alt="img01" />
+					<figcaption>
+						<h2>پروژه پردیس فاز 3</h2>
+						<p>جهت مشاهده اطلاعات کامل کلیک کنید </p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="Portfoilo_details.html" class="grid">
+				<figure class="effect-ruby">
+					<img src="/site/Img/news-img1.jpg" alt="img01" />
+					<figcaption>
+						<h2>پروژه پرستار 8</h2>
+						<p>جهت مشاهده اطلاعات کامل کلیک کنید </p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="Portfoilo_details.html" class="grid">
+				<figure class="effect-ruby">
+					<img src="/site/Img/Lotus-M-G-4.jpg" alt="img01" />
+					<figcaption>
+						<h2>پروژه مهندس کیانی</h2>
+						<p>جهت مشاهده اطلاعات کامل کلیک کنید </p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="container my-5">
+	<div class="row bg-light banner-bui text-white radius15">
+		<div class="col-lg-8 pt-5 px-5 pb-xl-0 pb-5">
+
+			<h2 class="IRANSans_Medium">شرکت فنی و مهندسی</h2>
+			<h1 class="text-warning">ایل تای گلستان</h1>
+			<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </p>
+			<div class="row">
+
+				<div class="col-md-4 col-sm-6 stats d-flex flex-column p-2">
+					<div class="d-flex flex-row">
+						<i class="fal fa-building  text-warning" aria-hidden="true"></i>
+						<div class="counting" data-count="120">0</div>
+					</div>
+					<h5>پروژه های فعلی</h5>
+				</div>
+				<div class="col-md-4 col-sm-6 stats d-flex flex-column p-2">
+					<div class="d-flex flex-row">
+						<i class="fal fa-trophy text-warning" aria-hidden="true"></i>
+						<div class="counting" data-count="80">0</div>
+					</div>
+					<h5>پروژه های تکمیل شده</h5>
+				</div>
+				<div class="col-md-4 stats d-flex flex-column p-2">
+					<div class="d-flex flex-row">
+						<i class="fal fa-thumbs-up text-warning" aria-hidden="true"></i>
+						<div class="counting" data-count="250">0</div>
+					</div>
+					<h5>مشتریان راضی</h5>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-lg-4 d-lg-block d-none">
+			<img src="/site/Img/testimonial.png" class="img-fluid pt-4 pl-4" />
+		</div>
+	</div>
+
+</section>
+
+
+<section class="container blog-grid mt-5">
+	<div class="d-flex flex-row my-3">
+		<div class="Dottedstocol ml-3"></div>
+		<div class="singletitle">
+			<span>مقالات</span>
+			<h1 class="text-right">آخرین مطالب ارسالی </h1>
+		</div>
+	</div>
+	<div id="owl-blog" class="owl-carousel owl-theme text-right ">
+		<div class="m-3 blog_style">
+			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img1.jpg" alt="Card image"></a>
+			<div class="card-body">
+				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
+				<p class="mb-2">
+					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
+				</p>
+				<span><a href="#">فناوری نانو</a></span>
+				<div class="d-flex flex-row justify-content-between mt-2">
+					<div>
+						<span><i class="fal fa-eye ml-2"></i>22</span>
+						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
+					</div>
+					<a href="Blog_destails.html">ادامه مطلب »</a>
+				</div>
+			</div>
+		</div>
+		<div class="m-3 blog_style">
+			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img4.jpg" alt="Card image"></a>
+			<div class="card-body">
+				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
+				<p class="mb-2">
+					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
+				</p>
+				<span><a href="#">سازه های مدرن</a></span>
+
+				<div class="d-flex flex-row justify-content-between mt-2">
+					<div>
+						<span><i class="fal fa-eye ml-2"></i>22</span>
+						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
+					</div>
+					<a href="Blog_destails.html">ادامه مطلب »</a>
+				</div>
+			</div>
+		</div>
+		<div class="m-3 blog_style">
+			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img5.jpg" alt="Card image"></a>
+			<div class="card-body">
+				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
+				<p class="mb-2">
+					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
+				</p>
+				<span><a href="#">تاثیر نانو ذرات</a></span>
+
+				<div class="d-flex flex-row justify-content-between mt-2">
+					<div>
+						<span><i class="fal fa-eye ml-2"></i>22</span>
+						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
+					</div>
+					<a href="Blog_destails.html">ادامه مطلب »</a>
+				</div>
+			</div>
+		</div>
+		<div class="m-3 blog_style">
+			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img1.jpg" alt="Card image"></a>
+			<div class="card-body">
+				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
+				<p class="mb-2">
+					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
+				</p>
+				<span><a href="#">فناوری نانو</a></span>
+
+				<div class="d-flex flex-row justify-content-between mt-2">
+					<div>
+						<span><i class="fal fa-eye ml-2"></i>22</span>
+						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
+					</div>
+					<a href="Blog_destails.html">ادامه مطلب »</a>
+				</div>
+			</div>
+		</div>
+		<div class="m-3 blog_style">
+			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img4.jpg" alt="Card image"></a>
+			<div class="card-body">
+				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
+				<p class="mb-2">
+					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
+				</p>
+				<span><a href="#">سازه های مدرن</a></span>
+
+				<div class="d-flex flex-row justify-content-between mt-2">
+					<div>
+						<span><i class="fal fa-eye ml-2"></i>22</span>
+						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
+					</div>
+					<a href="Blog_destails.html">ادامه مطلب »</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+
+
+<section class="container-fluid my-4 py-5 bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 d-sm-block d-none">
+				<img src="/site/Img/mobile.png" />
+			</div>
+			<div class="col-lg-8 p-3">
+
+				<h3 class="IRANSans_Bold mb-2">نیاز به مشاوره دارید ؟</h3>
+				<p class="text-justify">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
+				<a href="blog_grid.html" class="btn btn-success text-white radius10 py-2 px-4 my-3"><i class="fal fa-phone ml-2"></i>تماس بگیرید ! </a>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section class="container">
+	<div class="row bg-warning  px-5 py-3 my-5 radius10">
+		<div class="col-lg-9 text-dark  text-lg-right text-center">
+			<!--<h3>خدمات ما</h3>-->
+			<h5 class="IRANSans_Medium">"ما تنها ساختمان های شما را نمیسازیم بلکه رویاهای شما را خواهیم ساخت .. "</h5>
+			<p>
+				لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم..
+
+			</p>
+		</div>
+		<div class="col-lg-3 text-dark text-lg-left text-center mt-lg-0 mt-3">
+			<a class="btn btn-light radius20 text-dark IRANSans_Medium">تماس بگیرید : 09304567896</a>
+		</div>
+	</div>
+</section>
+
+<section class="container">
+	<h3 class="bt-center text-center IRANSans_Bold my-4">مشتریان راضی</h3>
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="owl-customers" class="owl-carousel owl-theme text-center ">
+				<div class="m-2">
+					<img src="/site/Img/Logo1.png" />
+				</div>
+				<div class="m-2">
+					<img src="/site/Img/Logo2.png" />
+				</div>
+				<div class="m-2">
+					<img src="/site/Img/Logo4.png" />
+				</div>
+
+				<div class="m-2">
+					<img src="/site/Img/Logo5.png" />
+				</div>
+				<div class="m-2">
+					<img src="/site/Img/Logo1.png" />
+				</div>
+				<div class="m-2">
+					<img src="/site/Img/Logo2.png" />
+				</div>
+				<div class="m-2">
+					<img src="/site/Img/Logo4.png" />
+				</div>
+
+				<div class="m-2">
+					<img src="/site/Img/Logo5.png" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>

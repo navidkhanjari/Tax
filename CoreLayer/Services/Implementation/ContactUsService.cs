@@ -27,7 +27,7 @@ namespace CoreLayer.Services.Implementation
 		{
 			try
 			{
-				ContactUs ContactUs = await _Context.ContactUs.LastAsync();
+				ContactUs ContactUs = await _Context.ContactUs.SingleOrDefaultAsync();
 
 				if (ContactUs != null)
 				{

@@ -1,0 +1,75 @@
+﻿@model ContactUsDTO
+
+@{
+    ViewData["Title"] = "تماس با ما";
+}
+@section Header {
+    @await Component.InvokeAsync("Header")
+}
+@section Footer {
+    @await Component.InvokeAsync("Footer")
+}
+
+<section class="banner_area">
+    <div class="container">
+        <h1 class="text-white IRANSans_Bold">@ViewData["Title"]</h1>
+        <div class="breadcrumb_content">
+            <ul>
+                <li><a href="/">صفحه اصلی</a></li>
+                <li><a href="#">@ViewData["Title"]</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="container p-md-5 p-4 ">
+    <div class="d-flex flex-row mb-3">
+        <div class="Dottedstocol ml-3"></div>
+        <div class="singletitle">
+            <span>راه های ارتباطی</span>
+            <h2 class="text-right">از طریق راه های ارتباطی زیر با ما در تماس باشید</h2>
+        </div>
+    </div>
+    @if(Model != null){
+        <div class="row">
+            <div class="col-lg-6  mb-4 px-4 brcontact">
+                <div class="contact-block mb-3">
+                    <h4><i class="fal fa-phone ml-2 p-2"></i>شماره های تماس</h4>
+                    <p>
+                        @Model.Number
+                    </p>
+                </div>
+
+                <div class="contact-block mb-3">
+                    <h4><i class="fal fa-envelope-open ml-2 p-2"></i>آدرس ایمیل</h4>
+                    <p>@Model.Email</p>
+                </div>
+                @if(Model.Description != null)
+                {
+                    <div class="contact-block">
+                        <h4><i class="fal fa-info ml-2 p-2"></i>اطلاعات</h4>
+                        <p>@Model.Description</p>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-6 mb-4">
+                <div class="contact-shape d-lg-block d-none">
+                    <img src="/site/Img/contact-form.png" class="img-fluid" alt="Img">
+                </div>
+                <div class="mx-md-5  p-4 box radius15 position-relative">
+                    <p class="mb-3 bg-light p-3 radius10">جهت ارتباط با ما از فرم زیر استفاده نمایید</p>
+                    <form class="contact-form" method="post">
+                        <input type="text" class="form-control mb-3" name="FullName" required placeholder="نام و نام خانوادگی">
+                        <input type="email" class="form-control mb-3" name="Email" placeholder="ایمیل (اختیاری)">
+                        <input type="text" class="form-control mb-3" name="Number" required placeholder="شماره تماس">
+                        <textarea class="form-control mb-3" cols="60" rows="9" name="Description" required placeholder="متن پیام"></textarea>
+                        <button type="submit" class="btn btn-warning text-dark">ارسال<i class="fal fa-paper-plane pr-2"></i></button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    }
+</section>
