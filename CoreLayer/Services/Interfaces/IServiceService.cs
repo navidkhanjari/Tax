@@ -7,6 +7,7 @@ namespace CoreLayer.Services.Interfaces
 	public interface IServiceService
 	{
 		Task<List<ServiceDTO>> GetServices();
+		Task<List<ServiceDTO>> GetServicesForShow();
 		Task<Service> GetServiceById(int Id);
 
 		Task<bool> Add(Service Service);

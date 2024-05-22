@@ -2,7 +2,7 @@
 
 namespace UI.ViewComponents
 {
-	public class HeaderViewComponent : ViewComponent
+    public class HeaderViewComponent : ViewComponent
 	{
 		public IViewComponentResult Invoke()
 		{

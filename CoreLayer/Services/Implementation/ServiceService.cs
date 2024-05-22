@@ -42,6 +42,26 @@ namespace CoreLayer.Services.Implementation
 		}
 		#endregion
 
+		#region (Get Services)
+		public async Task<List<ServiceDTO>> GetServicesForShow()
+		{
+			try
+			{
+				List<Service> Services = await _Context.Services.Where(S => S.Visible).ToListAsync();
+
+				List<ServiceDTO> ServiceDTOs = _Mapper.Map<List<Service>, List<ServiceDTO>>(Services);
+
+				return ServiceDTOs;
+			}
+			catch (Exception Exception)
+			{
+				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+				return null;
+			}
+		}
+		#endregion
+
 		#region (Get Service By Id)
 		public async Task<Service> GetServiceById(int Id)
 		{
