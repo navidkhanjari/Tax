@@ -1,194 +1,102 @@
 ﻿@{
-	ViewData["Title"] = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
+    ViewData["Title"] = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
 }
 @section MainSlider {
-	@await Component.InvokeAsync("MainSlider")
+    @await Component.InvokeAsync("MainSlider")
 }
 @section Header {
-	@await Component.InvokeAsync("Header")
+    @await Component.InvokeAsync("Header")
 }
 @section Footer {
-	@await Component.InvokeAsync("Footer")
+    @await Component.InvokeAsync("Footer")
 }
 <div class="container mt-lg-4 pt-3">
-	<div class="row">
-		@await Component.InvokeAsync("Services")
-	</div>
+    <div class="row">
+        @await Component.InvokeAsync("Services")
+    </div>
 </div>
 
 @await Component.InvokeAsync("AboutUs")
 
 <section class="container blog-grid mt-5">
-	<div class="d-flex flex-row my-3">
-		<div class="Dottedstocol ml-3"></div>
-		<div class="singletitle">
-			<span>مقالات</span>
-			<h1 class="text-right">آخرین مطالب ارسالی </h1>
-		</div>
-	</div>
-	<div id="owl-blog" class="owl-carousel owl-theme text-right ">
-		<div class="m-3 blog_style">
-			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img1.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
-				<p class="mb-2">
-					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
-				</p>
-				<span><a href="#">فناوری نانو</a></span>
-				<div class="d-flex flex-row justify-content-between mt-2">
-					<div>
-						<span><i class="fal fa-eye ml-2"></i>22</span>
-						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
-					</div>
-					<a href="Blog_destails.html">ادامه مطلب »</a>
-				</div>
-			</div>
-		</div>
-		<div class="m-3 blog_style">
-			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img4.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
-				<p class="mb-2">
-					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
-				</p>
-				<span><a href="#">سازه های مدرن</a></span>
-
-				<div class="d-flex flex-row justify-content-between mt-2">
-					<div>
-						<span><i class="fal fa-eye ml-2"></i>22</span>
-						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
-					</div>
-					<a href="Blog_destails.html">ادامه مطلب »</a>
-				</div>
-			</div>
-		</div>
-		<div class="m-3 blog_style">
-			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img5.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
-				<p class="mb-2">
-					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
-				</p>
-				<span><a href="#">تاثیر نانو ذرات</a></span>
-
-				<div class="d-flex flex-row justify-content-between mt-2">
-					<div>
-						<span><i class="fal fa-eye ml-2"></i>22</span>
-						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
-					</div>
-					<a href="Blog_destails.html">ادامه مطلب »</a>
-				</div>
-			</div>
-		</div>
-		<div class="m-3 blog_style">
-			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img1.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
-				<p class="mb-2">
-					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
-				</p>
-				<span><a href="#">فناوری نانو</a></span>
-
-				<div class="d-flex flex-row justify-content-between mt-2">
-					<div>
-						<span><i class="fal fa-eye ml-2"></i>22</span>
-						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
-					</div>
-					<a href="Blog_destails.html">ادامه مطلب »</a>
-				</div>
-			</div>
-		</div>
-		<div class="m-3 blog_style">
-			<a href="Blog_destails.html"><img class="card-img-top" src="/site/Img/news-img4.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<h3 class="mb-2"><a href="Blog_destails.html">تاثیر نانوذرات بر مصالح ساختمانی</a></h3>
-				<p class="mb-2">
-					با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان وب و گرافیک است با تولید سادگی  …
-				</p>
-				<span><a href="#">سازه های مدرن</a></span>
-
-				<div class="d-flex flex-row justify-content-between mt-2">
-					<div>
-						<span><i class="fal fa-eye ml-2"></i>22</span>
-						<span class="mr-3"><i class="fal fa-comment-alt ml-2"></i>35</span>
-					</div>
-					<a href="Blog_destails.html">ادامه مطلب »</a>
-				</div>
-			</div>
-		</div>
-
-	</div>
+    <div class="d-flex flex-row my-3">
+        <div class="Dottedstocol ml-3"></div>
+        <div class="singletitle">
+            <span>مقالات</span>
+            <h1 class="text-right">آخرین مقالات</h1>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Post")
 </section>
 
 
 
 <section class="container-fluid my-4 py-5 bg-light">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 d-sm-block d-none">
-				<img src="/site/Img/mobile.png" />
-			</div>
-			<div class="col-lg-8 p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 d-sm-block d-none">
+                <img src="/site/Img/mobile.png" />
+            </div>
+            <div class="col-lg-8 p-3">
 
-				<h3 class="IRANSans_Bold mb-2">نیاز به مشاوره دارید ؟</h3>
-				<p class="text-justify">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.  </p>
-				<a href="blog_grid.html" class="btn btn-success text-white radius10 py-2 px-4 my-3"><i class="fal fa-phone ml-2"></i>تماس بگیرید ! </a>
+                <h3 class="IRANSans_Bold mb-2">نیاز به مشاوره دارید ؟</h3>
+                <p class="text-justify">حسابداری یکی از اصلی‌ترین خدمات شرکت دانا محاسب نوین است که طیف گسترده‌ای از وظایف و مسئولیت‌های مالی یک کسب و کار را بر عهده می‌گیرد. خدمات حسابداری شامل تکمیل دفاتر مالی، تهیه صورت‌های مالی، گزارشات مالی، بررسی خروجی مالی شرکت، تهیه تراز آزمایشی، صورت وضعیت مالی، حسابرسی، مدیریت حقوق و دستمزد، بودجه‌بندی و مشاوره مالی است که گزارش کاملی از عملکرد مالی یک شرکت در بازه‌های زمانی مشخص را ارائه خواهد داد. گزاراشات تهیه شده توسط بخش حسابداری، میزان سوددهی و یا زیان یک شرکت را به طور دقیق نشان می‌دهد که با بررسی آن می‌توانید اقدامات لازم در جهت حفظ موقعیت شرکت و یا بهبود وضعیت موجود را با همراهی مشاور و حسابدار مالی خود انجام دهید. شرکت حسابداری دانا محاسب نوین کلیه امور مربوط به حسابداری کسب و کار شما را با همراهی تیم مجرب و متخصص خود عهده‌دار می‌شود. متخصصان دانا محاسب نوین با تکیه بر دانش و تخصص خود در حوزه حسابداری به بهبود عملکرد، کارایی و سودآوری شما کمک خواهد کرد.</p>
+                <a href="blog_grid.html" class="btn btn-success text-white radius10 py-2 px-4 my-3"><i class="fal fa-phone ml-2"></i>تماس بگیرید ! </a>
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </section>
 
 <section class="container">
-	<div class="row bg-warning  px-5 py-3 my-5 radius10">
-		<div class="col-lg-9 text-dark  text-lg-right text-center">
-			<!--<h3>خدمات ما</h3>-->
-			<h5 class="IRANSans_Medium">"ما تنها ساختمان های شما را نمیسازیم بلکه رویاهای شما را خواهیم ساخت .. "</h5>
-			<p>
-				لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم..
-
-			</p>
-		</div>
-		<div class="col-lg-3 text-dark text-lg-left text-center mt-lg-0 mt-3">
-			<a class="btn btn-light radius20 text-dark IRANSans_Medium">تماس بگیرید : 09304567896</a>
-		</div>
-	</div>
+    <div class="row bg-warning  px-5 py-3 my-5 radius10">
+        <div class="col-lg-9 text-dark  text-lg-right text-center">
+            <!--<h3>خدمات ما</h3>-->
+            <h5 class="IRANSans_Medium">"ما در کنار شما هستیم .. "</h5>
+            <p>
+                مدیریت اصولی و حرفه‌ای امور مالی و حسابداری کسب و کارها نقش مهمی را در موفقیت و دستیابی به اهداف بلندمدت آنها ایفا می‌کند.
+            </p>
+        </div>
+        <div class="col-lg-3 text-dark text-lg-left text-center mt-lg-0 mt-3">
+            <a class="btn btn-light radius20 text-dark IRANSans_Medium">تماس بگیرید : 09304567896</a>
+        </div>
+    </div>
 </section>
 
 <section class="container">
-	<h3 class="bt-center text-center IRANSans_Bold my-4">مشتریان راضی</h3>
-	<div class="row">
-		<div class="col-lg-12">
-			<div id="owl-customers" class="owl-carousel owl-theme text-center ">
-				<div class="m-2">
-					<img src="/site/Img/Logo1.png" />
-				</div>
-				<div class="m-2">
-					<img src="/site/Img/Logo2.png" />
-				</div>
-				<div class="m-2">
-					<img src="/site/Img/Logo4.png" />
-				</div>
+    <h3 class="bt-center text-center IRANSans_Bold my-4">مشتریان راضی</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="owl-customers" class="owl-carousel owl-theme text-center ">
+                <div class="m-2">
+                    <img src="/site/Img/Logo1.png" />
+                </div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo2.png" />
+                </div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo4.png" />
+                </div>
 
-				<div class="m-2">
-					<img src="/site/Img/Logo5.png" />
-				</div>
-				<div class="m-2">
-					<img src="/site/Img/Logo1.png" />
-				</div>
-				<div class="m-2">
-					<img src="/site/Img/Logo2.png" />
-				</div>
-				<div class="m-2">
-					<img src="/site/Img/Logo4.png" />
-				</div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo5.png" />
+                </div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo1.png" />
+                </div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo2.png" />
+                </div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo4.png" />
+                </div>
 
-				<div class="m-2">
-					<img src="/site/Img/Logo5.png" />
-				</div>
-			</div>
+                <div class="m-2">
+                    <img src="/site/Img/Logo5.png" />
+                </div>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </section>

@@ -4,256 +4,288 @@ using CoreLayer.DTOs.Posts;
 using CoreLayer.Services.Interfaces;
 using CoreLayer.Software;
 using CoreLayer.Utilities;
+using DataLayer.Context;
 using DataLayer.Entities.Posts;
 using Microsoft.EntityFrameworkCore;
-using DataLayer.Context;
 using System.Reflection;
 
 namespace CoreLayer.Services.Implementation
 {
-	public class PostService : IPostService
-	{
-		#region (Dependency Injection)
-		private readonly ApplicationContext _Context;
-		private readonly IMapper _Mapper;
-		public PostService(ApplicationContext Context, IMapper Mapper)
-		{
-			this._Context = Context;
-			this._Mapper = Mapper;
-		}
-		#endregion
+    public class PostService : IPostService
+    {
+        #region (Dependency Injection)
+        private readonly ApplicationContext _Context;
+        private readonly IMapper _Mapper;
+        public PostService(ApplicationContext Context, IMapper Mapper)
+        {
+            this._Context = Context;
+            this._Mapper = Mapper;
+        }
+        #endregion
 
-		#region (Get Posts)
-		public async Task<List<Post>> GetPosts()
-		{
-			try
-			{
-				List<Post> Post = await _Context.Posts.ToListAsync();
+        #region (Get Posts)
+        public async Task<List<Post>> GetPosts()
+        {
+            try
+            {
+                List<Post> Post = await _Context.Posts.ToListAsync();
 
-				return Post;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                return Post;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return null;
-			}
-		}
-		#endregion
+                return null;
+            }
+        }
+        #endregion
 
-		#region (Get Post By Filter)
-		public PostFilterDTO GetPostByFilter(PostFilterDTO PostFilterDTO)
-		{
-			var Query = _Context.Posts.OrderByDescending(P => P.PublishDate).AsQueryable();
+        #region (Get Posts For Show)
+        public async Task<List<PostDTO>> GetPostsForShow(int? Take = null)
+        {
+            try
+            {
+                if (Take != null)
+                {
+                    List<Post> Post = await _Context.Posts.Where(P => P.Visible).Take((int)Take).ToListAsync();
 
-			if (PostFilterDTO.FindAll)
-			{
-				PostFilterDTO.Build(Query.Count()).SetEntities(Query);
+                    List<PostDTO> PostDTOs = _Mapper.Map<List<Post>, List<PostDTO>>(Post);
 
-				return PostFilterDTO;
-			}
+                    return PostDTOs;
+                }
+                else
+                {
+                    List<Post> Post = await _Context.Posts.Where(P => P.Visible).ToListAsync();
 
-			if (PostFilterDTO.Title != null)
-			{
-				Query = Query.Where(P => P.Title.Contains(PostFilterDTO.Title));
-			}
+                    List<PostDTO> PostDTOs = _Mapper.Map<List<Post>, List<PostDTO>>(Post);
 
-			if (PostFilterDTO.Authour != null)
-			{
-				Query = Query.Where(P => P.Authour.Contains(PostFilterDTO.Authour));
-			}
+                    return PostDTOs;
+                }
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-			if (PostFilterDTO.Type != null)
-			{
-				switch (PostFilterDTO.Type)
-				{
-					case PostFilterDTO.SearchType.MostVisited:
-						Query = Query.OrderByDescending(P => P.Visit);
-						break;
-					case PostFilterDTO.SearchType.Newest:
-						Query = Query.OrderByDescending(P => P.PublishDate);
-						break;
-					case PostFilterDTO.SearchType.Oldest:
-						Query = Query.OrderBy(P => P.PublishDate);
-						break;
-				}
-			}
-
-			PostFilterDTO.Build(Query.Count()).SetEntities(Query);
-
-			return PostFilterDTO;
-		}
-		#endregion
-
-		#region (Get Post By Id)
-		public async Task<Post> GetPostById(int Id)
-		{
-			try
-			{
-				Post Post = await _Context.Posts.SingleOrDefaultAsync(P => P.Id == Id);
-
-				return Post;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
-
-				return null;
-			}
-		}
-		#endregion
-
-		#region (Get Post By Slug)
-		public async Task<Post> GetPostBySlug(string Slug)
-		{
-			try
-			{
-				Post Post = await _Context.Posts.SingleOrDefaultAsync(P => P.Slug == Slug.ToSlug());
-
-				return Post;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
-
-				return null;
-			}
-		}
-		#endregion
+                return null;
+            }
+        }
+        #endregion
 
 
-		#region (Add)
-		public async Task<bool> Add(Post Post)
-		{
-			try
-			{
-				await _Context.Posts.AddAsync(Post);
-				await _Context.SaveChangesAsync();
-				return true;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+        #region (Get Post By Filter)
+        public PostFilterDTO GetPostByFilter(PostFilterDTO PostFilterDTO)
+        {
+            var Query = _Context.Posts.OrderByDescending(P => P.PublishDate).AsQueryable();
 
-				return false;
-			}
-		}
-		#endregion
+            if (PostFilterDTO.FindAll)
+            {
+                PostFilterDTO.Build(Query.Count()).SetEntities(Query);
 
-		#region(Update)
-		public async Task<bool> Update(Post Post)
-		{
-			try
-			{
-				_Context.Posts.Update(Post);
-				await _Context.SaveChangesAsync();
-				return true;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                return PostFilterDTO;
+            }
 
-				return false;
-			}
-		}
-		#endregion
+            if (PostFilterDTO.Title != null)
+            {
+                Query = Query.Where(P => P.Title.Contains(PostFilterDTO.Title));
+            }
 
-		#region (Delete)
-		public async Task<bool> Delete(Post Post)
-		{
-			try
-			{
-				_Context.Posts.Remove(Post);
-				await _Context.SaveChangesAsync();
-				return true;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+            if (PostFilterDTO.Authour != null)
+            {
+                Query = Query.Where(P => P.Authour.Contains(PostFilterDTO.Authour));
+            }
 
-				return false;
-			}
-		}
-		#endregion
+            if (PostFilterDTO.Type != null)
+            {
+                switch (PostFilterDTO.Type)
+                {
+                    case PostFilterDTO.SearchType.MostVisited:
+                        Query = Query.OrderByDescending(P => P.Visit);
+                        break;
+                    case PostFilterDTO.SearchType.Newest:
+                        Query = Query.OrderByDescending(P => P.PublishDate);
+                        break;
+                    case PostFilterDTO.SearchType.Oldest:
+                        Query = Query.OrderBy(P => P.PublishDate);
+                        break;
+                }
+            }
+
+            PostFilterDTO.Build(Query.Count()).SetEntities(Query);
+
+            return PostFilterDTO;
+        }
+        #endregion
+
+        #region (Get Post By Id)
+        public async Task<Post> GetPostById(int Id)
+        {
+            try
+            {
+                Post Post = await _Context.Posts.SingleOrDefaultAsync(P => P.Id == Id);
+
+                return Post;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+                return null;
+            }
+        }
+        #endregion
+
+        #region (Get Post By Slug)
+        public async Task<Post> GetPostBySlug(string Slug)
+        {
+            try
+            {
+                Post Post = await _Context.Posts.SingleOrDefaultAsync(P => P.Slug == Slug.ToSlug());
+
+                return Post;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+                return null;
+            }
+        }
+        #endregion
 
 
-		#region (Create Post)
-		public async Task<CreatePostResult> CreatePost(CreatePostDTO CreatePostDTO)
-		{
-			try
-			{
-				Post PostBySlug = await GetPostBySlug(CreatePostDTO.Slug);
+        #region (Add)
+        public async Task<bool> Add(Post Post)
+        {
+            try
+            {
+                await _Context.Posts.AddAsync(Post);
+                await _Context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				if (PostBySlug != null)
-				{
-					return CreatePostResult.SlugExist;
-				}
+                return false;
+            }
+        }
+        #endregion
 
-				Post Post = _Mapper.Map<Post>(CreatePostDTO);
+        #region(Update)
+        public async Task<bool> Update(Post Post)
+        {
+            try
+            {
+                _Context.Posts.Update(Post);
+                await _Context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				string ImageName = CreatePostDTO.Image.SaveFileAndReturnName(FilePath.PostImageUploadPath);
+                return false;
+            }
+        }
+        #endregion
 
-				Post.ImageName = ImageName;
-				Post.PublishDate = DateTime.Now;
-				Post.Slug = CreatePostDTO.Slug.ToSlug();
+        #region (Delete)
+        public async Task<bool> Delete(Post Post)
+        {
+            try
+            {
+                _Context.Posts.Remove(Post);
+                await _Context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				await Add(Post);
+                return false;
+            }
+        }
+        #endregion
 
-				return CreatePostResult.Success;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-				return CreatePostResult.Error;
-			}
-		}
-		#endregion
+        #region (Create Post)
+        public async Task<CreatePostResult> CreatePost(CreatePostDTO CreatePostDTO)
+        {
+            try
+            {
+                Post PostBySlug = await GetPostBySlug(CreatePostDTO.Slug);
 
-		#region (Update Post)
-		public async Task<UpdatePostResult> UpdatePost(UpdatePostDTO UpdatePostDTO)
-		{
-			try
-			{
-				Post PostBySlug = await GetPostBySlug(UpdatePostDTO.Slug);
+                if (PostBySlug != null)
+                {
+                    return CreatePostResult.SlugExist;
+                }
 
-				if (PostBySlug != null && PostBySlug.Id != UpdatePostDTO.Id)
-				{
-					return UpdatePostResult.SlugExist;
-				}
+                Post Post = _Mapper.Map<Post>(CreatePostDTO);
 
-				Post Post = await GetPostById(UpdatePostDTO.Id);
+                string ImageName = CreatePostDTO.Image.SaveFileAndReturnName(FilePath.PostImageUploadPath);
 
-				_Mapper.Map(UpdatePostDTO, Post);
+                Post.ImageName = ImageName;
+                Post.PublishDate = DateTime.Now;
+                Post.Slug = CreatePostDTO.Slug.ToSlug();
 
-				if (UpdatePostDTO.File != null)
-				{
-					//delete old image
-					var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.PostImagePath, Post.ImageName);
+                await Add(Post);
 
-					if (File.Exists(ImagePath))
-					{
-						File.Delete(ImagePath);
-					}
+                return CreatePostResult.Success;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
 
-					string ImageName = UpdatePostDTO.File.SaveFileAndReturnName(FilePath.PostImageUploadPath);
+                return CreatePostResult.Error;
+            }
+        }
+        #endregion
 
-					Post.ImageName = ImageName;
-				}
+        #region (Update Post)
+        public async Task<UpdatePostResult> UpdatePost(UpdatePostDTO UpdatePostDTO)
+        {
+            try
+            {
+                Post PostBySlug = await GetPostBySlug(UpdatePostDTO.Slug);
 
-				Post.Slug = UpdatePostDTO.Slug.ToSlug();
+                if (PostBySlug != null && PostBySlug.Id != UpdatePostDTO.Id)
+                {
+                    return UpdatePostResult.SlugExist;
+                }
 
-				await Update(Post);
+                Post Post = await GetPostById(UpdatePostDTO.Id);
 
-				return UpdatePostResult.Success;
-			}
-			catch (Exception Exception)
-			{
-				Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+                _Mapper.Map(UpdatePostDTO, Post);
 
-				return UpdatePostResult.Error;
-			}
-		}
-		#endregion
-	}
+                if (UpdatePostDTO.File != null)
+                {
+                    //delete old image
+                    var ImagePath = Path.Combine(Directory.GetCurrentDirectory(), FilePath.PostImagePath, Post.ImageName);
+
+                    if (File.Exists(ImagePath))
+                    {
+                        File.Delete(ImagePath);
+                    }
+
+                    string ImageName = UpdatePostDTO.File.SaveFileAndReturnName(FilePath.PostImageUploadPath);
+
+                    Post.ImageName = ImageName;
+                }
+
+                Post.Slug = UpdatePostDTO.Slug.ToSlug();
+
+                await Update(Post);
+
+                return UpdatePostResult.Success;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+                return UpdatePostResult.Error;
+            }
+        }
+        #endregion
+    }
 }

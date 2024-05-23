@@ -2,7 +2,7 @@
 
 namespace UI.ViewComponents
 {
-	public class FooterViewComponent : ViewComponent
+    public class FooterViewComponent : ViewComponent
 	{
 		public IViewComponentResult Invoke()
 		{

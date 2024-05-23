@@ -1,0 +1,26 @@
+﻿@model List<PostDTO>
+
+@if (Model != null)
+{
+    <div id="owl-blog" class="owl-carousel owl-theme text-right">
+        @foreach (var Post in Model)
+        {
+            <div class="m-3 blog_style">
+                <a href="/blog/@Post.Slug"><img class="card-img-top" src="@FilePath.PostImagePath@Post.ImageName" alt="@Post.Title" width="370" height="300"></a>
+                <div class="card-body">
+                    <h3 class="mb-2"><a href="/blog/@Post.Slug">@Post.Title</a></h3>
+                    <p class="mb-2">
+                        @Post.ShortDescription
+                    </p>
+                    <div class="d-flex flex-row justify-content-between mt-2">
+                        <div>
+                            <span><i class="fal fa-eye ml-2"></i>@Post.Visit</span>
+                        </div>
+                        <a href="/blog/@Post.Slug">ادامه مطلب »</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
