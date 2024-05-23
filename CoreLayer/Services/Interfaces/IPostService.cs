@@ -8,6 +8,7 @@ namespace CoreLayer.Services.Interfaces
     {
         Task<List<Post>> GetPosts();
         Task<List<PostDTO>> GetPostsForShow(int? take = null);
+
         Task<Post> GetPostById(int Id);
         Task<Post> GetPostBySlug(string Slug);
 
