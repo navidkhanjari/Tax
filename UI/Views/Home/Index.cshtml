@@ -41,8 +41,6 @@
 
                 <h3 class="IRANSans_Bold mb-2">نیاز به مشاوره دارید ؟</h3>
                 <p class="text-justify">حسابداری یکی از اصلی‌ترین خدمات شرکت دانا محاسب نوین است که طیف گسترده‌ای از وظایف و مسئولیت‌های مالی یک کسب و کار را بر عهده می‌گیرد. خدمات حسابداری شامل تکمیل دفاتر مالی، تهیه صورت‌های مالی، گزارشات مالی، بررسی خروجی مالی شرکت، تهیه تراز آزمایشی، صورت وضعیت مالی، حسابرسی، مدیریت حقوق و دستمزد، بودجه‌بندی و مشاوره مالی است که گزارش کاملی از عملکرد مالی یک شرکت در بازه‌های زمانی مشخص را ارائه خواهد داد. گزاراشات تهیه شده توسط بخش حسابداری، میزان سوددهی و یا زیان یک شرکت را به طور دقیق نشان می‌دهد که با بررسی آن می‌توانید اقدامات لازم در جهت حفظ موقعیت شرکت و یا بهبود وضعیت موجود را با همراهی مشاور و حسابدار مالی خود انجام دهید. شرکت حسابداری دانا محاسب نوین کلیه امور مربوط به حسابداری کسب و کار شما را با همراهی تیم مجرب و متخصص خود عهده‌دار می‌شود. متخصصان دانا محاسب نوین با تکیه بر دانش و تخصص خود در حوزه حسابداری به بهبود عملکرد، کارایی و سودآوری شما کمک خواهد کرد.</p>
-                <a href="blog_grid.html" class="btn btn-success text-white radius10 py-2 px-4 my-3"><i class="fal fa-phone ml-2"></i>تماس بگیرید ! </a>
-
             </div>
         </div>
 
@@ -52,51 +50,21 @@
 <section class="container">
     <div class="row bg-warning  px-5 py-3 my-5 radius10">
         <div class="col-lg-9 text-dark  text-lg-right text-center">
-            <!--<h3>خدمات ما</h3>-->
             <h5 class="IRANSans_Medium">"ما در کنار شما هستیم .. "</h5>
             <p>
                 مدیریت اصولی و حرفه‌ای امور مالی و حسابداری کسب و کارها نقش مهمی را در موفقیت و دستیابی به اهداف بلندمدت آنها ایفا می‌کند.
             </p>
         </div>
         <div class="col-lg-3 text-dark text-lg-left text-center mt-lg-0 mt-3">
-            <a class="btn btn-light radius20 text-dark IRANSans_Medium">تماس بگیرید : 09304567896</a>
+            <a class="btn btn-light radius20 text-dark IRANSans_Medium">درخواست مشاوره</a>
         </div>
     </div>
 </section>
 
-<section class="container">
-    <h3 class="bt-center text-center IRANSans_Bold my-4">مشتریان راضی</h3>
+<h3 class="bt-center text-center IRANSans_Bold mb-4">نظرات مشتریان</h3>
+
+<section class="container mb-5">
     <div class="row">
-        <div class="col-lg-12">
-            <div id="owl-customers" class="owl-carousel owl-theme text-center ">
-                <div class="m-2">
-                    <img src="/site/Img/Logo1.png" />
-                </div>
-                <div class="m-2">
-                    <img src="/site/Img/Logo2.png" />
-                </div>
-                <div class="m-2">
-                    <img src="/site/Img/Logo4.png" />
-                </div>
-
-                <div class="m-2">
-                    <img src="/site/Img/Logo5.png" />
-                </div>
-                <div class="m-2">
-                    <img src="/site/Img/Logo1.png" />
-                </div>
-                <div class="m-2">
-                    <img src="/site/Img/Logo2.png" />
-                </div>
-                <div class="m-2">
-                    <img src="/site/Img/Logo4.png" />
-                </div>
-
-                <div class="m-2">
-                    <img src="/site/Img/Logo5.png" />
-                </div>
-            </div>
-
-        </div>
+        @await Component.InvokeAsync("Comments")
     </div>
 </section>

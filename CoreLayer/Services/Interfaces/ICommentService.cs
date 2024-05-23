@@ -6,7 +6,8 @@ namespace CoreLayer.Services.Interfaces
 	public interface ICommentService
 	{
 		Task<List<CommentsDTO>> GetComments();
-		Task<Comment> GetCommentById(int Id);
+		Task<List<CommentsDTO>> GetCommentsForShow();
+        Task<Comment> GetCommentById(int Id);
 
 		Task<bool> Add(Comment Comment);
 		Task<bool> Update(Comment Comment);

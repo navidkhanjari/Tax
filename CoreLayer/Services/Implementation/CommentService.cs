@@ -60,6 +60,25 @@ namespace CoreLayer.Services.Implementation
         }
         #endregion
 
+        #region (Get Comments For Show)
+        public async Task<List<CommentsDTO>> GetCommentsForShow()
+        {
+            try
+            {
+                List<Comment> Comments = await _Context.Comments.Where(C => C.Visible).ToListAsync();
+
+                List<CommentsDTO> CommentsDTOs = _Mapper.Map<List<Comment>, List<CommentsDTO>>(Comments);
+
+                return CommentsDTOs;
+            }
+            catch (Exception Exception)
+            {
+                Log.AddError(MethodBase.GetCurrentMethod(), LogType.Error, Exception.Message);
+
+                return null;
+            }
+        }
+        #endregion
 
         #region(Add)
         public async Task<bool> Add(Comment Comment)
