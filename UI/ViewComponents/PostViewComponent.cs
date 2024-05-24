@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UI.ViewComponents
 {
-    public class PostViewComponent : ViewComponent
+	public class PostViewComponent : ViewComponent
     {
         private readonly IPostService _PostService;
         public PostViewComponent(IPostService PostService)

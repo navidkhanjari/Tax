@@ -1,0 +1,74 @@
+﻿@model PostDTO
+
+@{
+	ViewData["Title"] = "جزئیات مقاله";
+	ViewData["selected"] = "Blog";
+}
+@section Header {
+	@await Component.InvokeAsync("Header")
+}
+@section Footer {
+	@await Component.InvokeAsync("Footer")
+}
+<section class="banner_area">
+	<div class="container">
+		<h1 class="text-white IRANSans_Bold">جزئیات مقاله</h1>
+		<div class="breadcrumb_content">
+			<ul>
+				<li><a href="#">صفحه اصلی</a></li>
+				<li><a href="/blog/@Model.Slug">جزئیات مقاله</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="container p-4 ">
+	<div class="row">
+		<div class="col-xl-3 order-xl-0 order-1 mb-3">
+			<div class="py-2">
+				<div class="thumb-post mb-4">
+					<h2 class="bg-warning text-white  py-2 px-4 my-2 bright radius10 IRANSans_Medium">آخرین مطالب</h2>
+					<ul class="fa12 p-3">
+				@await Component.InvokeAsync("LatestPost")
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-9  order-xl-1 order-0 my-3">
+			<div class="p-sm-2">
+				<div class="item mb-4">
+
+					<div class="row">
+						<div class="col-lg-12 detailblog">
+							<div class="d-flex flex-row mb-2">
+								<div class="Dottedstocol ml-3"></div>
+								<div class="singletitle">
+									<h1 class="text-right">@Model.Title</h1>
+								</div>
+							</div>
+
+							<div class="d-flex flex-lg-row flex-column b-detay text-secondary mb-4">
+								<span class="mx-lg-2"><i class="fal fa-user ml-1"></i>نویسنده : @Model.Authour</span>
+								<span class="mx-lg-2"><i class="fal fa-calendar ml-1"></i>@Model.PublishDate.ToShamsi()</span>
+								<span class="mx-lg-2"><i class="fal fa-eye ml-1"></i>@Model.Visit بازدید</span>
+							</div>
+
+							<img src="@FilePath.PostImagePath@Model.ImageName" alt="@Model.Title" class="img-fluid mb-4  radius15" width="700" height="600">
+							@Html.Raw(Model.Description)
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="float-left">
+								<a class="btn bg-light py-1 px-4 m-1 fa12 radius25" href="#"><i class="fal fa-share"></i></a>
+								<a class="btn bg-light py-1 px-4 m-1 fa12 radius25" href="#"><i class="fal fa-share-alt"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

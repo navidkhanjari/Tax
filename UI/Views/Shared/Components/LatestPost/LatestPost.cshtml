@@ -1,0 +1,14 @@
+﻿@model List<PostDTO>
+
+@foreach (var Post in Model)
+{
+	<li>
+		<a href="/blog/@Post.Slug" class="d-flex flex-row">
+			<div><img src="@FilePath.PostImagePath@Post.ImageName" width="80" height="55"></div>
+			<div class="m-2">
+				<p>@Post.Title</p>
+			</div>
+		</a>
+	</li>
+}
+
