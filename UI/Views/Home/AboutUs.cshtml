@@ -3,7 +3,24 @@
 @{
 	ViewData["Title"] = "درباره ما";
 	ViewData["selected"] = "About-us";
+	var description = Model.Description.ToString();
+	var keywords = "";
 }
+@section MetaTags {
+	<meta name="description" content="@description" />
+	<meta name="keywords" content="@keywords" />
+
+	<meta name="twitter:description" content="@description" />
+	<meta property="og:title" content="@ViewData["Title"]" />
+	<meta property="og:description" content="@description" />
+	<meta property="og:url" content="https://danamohasebannovin.ir/about-us" />
+	<meta name="subject" content="@ViewData["Tilte"]" />
+	<meta name="twitter:title" content="@ViewData["Title"]" />
+	<meta name="twitter:description" content="@description" />
+	<link rel="canonical" href="https://danamohasebannovin.ir/about-us" />
+
+}
+
 @section Header {
 	@await Component.InvokeAsync("Header")
 }

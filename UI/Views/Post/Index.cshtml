@@ -1,6 +1,19 @@
 ﻿@model PostFilterForShowDTO
 @{
+	ViewData["Title"] = "مقالات";
 	ViewData["selected"] = "Blog";
+	var description = "تمامی مقالات سایت دانا محاسبان نوین";
+}
+@section MetaTags {
+
+	<meta name="description" content="@description" />
+	<meta name="twitter:title" content="@ViewData["Title"]" />
+	<meta name="twitter:description" content="@description" />
+	<meta name="keywords" content="@description" />
+	<meta property="og:title" content="@ViewData["Title"]" />
+	<meta property="og:description" content="@description" />
+	<meta property="og:url" content="https://danamohasebannovin.ir/blog" />
+	<link rel="canonical" href="https://danamohasebannovin.ir/blog" />
 }
 
 @section Header {

@@ -1,10 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>@ViewData["Title"] دانا محاسبان نوین</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1">
+	<meta name="robots" content="index, follow" />
+	<meta name="copyright" content="dana mohaseban novin" />
+	<meta name="author" content="web master design" />
+	<meta property="og:locale" content="fa_IR" />
+	<meta property="og:site_name" content="دانا محاسبان نوین" />
+	@RenderSection("MetaTags", false)
 
 	<link href="/site/Css/Main.css" rel="stylesheet" />
 	<link href="/site/Css/Style.css" rel="stylesheet" />
@@ -30,6 +36,6 @@
 	<script src="/site/Js/Menu.js"></script>
 	<script src="~/lib/sweetalert/sweetalert.js"></script>
 	<script src="~/lib/sweetalert/sweetalertv11.7.5.js"></script>
-	@RenderSection("Scripts",false)
+	@RenderSection("Scripts", false)
 </body>
 </html>

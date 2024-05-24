@@ -1,6 +1,19 @@
 ﻿@{
     ViewData["Title"] = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
     ViewData["selected"] = "Home";
+    var description = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
+    var keywords = "";
+}
+@section MetaTags {
+
+    <meta name="description" content="@description" />
+    <meta name="twitter:title" content="@ViewData["Title"]" />
+    <meta name="twitter:description" content="@description" />
+    <meta name="keywords" content="@keywords" />
+    <meta property="og:title" content="@ViewData["Title"]" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:url" content="https://danamohasebannovin.ir/" />
+    <link rel="canonical" href="https://danamohasebannovin.ir/" />
 }
 @section MainSlider {
     @await Component.InvokeAsync("MainSlider")
