@@ -13,8 +13,9 @@ namespace CoreLayer.Services.Interfaces
         Task<Post> GetPostBySlug(string Slug);
 
         PostFilterDTO GetPostByFilter(PostFilterDTO PostFilterDTO);
+        PostFilterForShowDTO GetPostByFilterForShow(PostFilterForShowDTO PostFilterForShowDTO);
 
-        Task<bool> Add(Post Post);
+		Task<bool> Add(Post Post);
         Task<bool> Update(Post Post);
         Task<bool> Delete(Post Post);
 

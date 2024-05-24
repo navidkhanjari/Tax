@@ -13,9 +13,9 @@ namespace UI.Controllers
         }
 
         [HttpGet("blog")]
-        public IActionResult Index(PostFilterDTO PostFilterDTO)
+        public IActionResult Index(PostFilterForShowDTO PostFilterForShowDTO)
         {
-            return View(/*_PostService.GetPostByFilter(PostFilterDTO)*/);
+            return View(_PostService.GetPostByFilterForShow(PostFilterForShowDTO));
         }
     }
 }

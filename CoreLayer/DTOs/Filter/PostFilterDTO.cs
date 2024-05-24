@@ -18,4 +18,9 @@ namespace CoreLayer.DTOs.Filter
 			Newest
 		}
 	}
+
+	public class PostFilterForShowDTO : Paging<Post>
+	{
+		
+	}
 }

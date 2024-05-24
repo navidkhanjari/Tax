@@ -115,10 +115,22 @@ namespace CoreLayer.Services.Implementation
 
             return PostFilterDTO;
         }
-        #endregion
+		#endregion
 
-        #region (Get Post By Id)
-        public async Task<Post> GetPostById(int Id)
+		#region (Get Post By Filter)
+		public PostFilterForShowDTO GetPostByFilterForShow(PostFilterForShowDTO PostFilterForShowDTO)
+		{
+			var Query = _Context.Posts.OrderByDescending(P => P.PublishDate).AsQueryable();
+
+			PostFilterForShowDTO.Build(Query.Count()).SetEntities(Query);
+
+			return PostFilterForShowDTO;
+		}
+		#endregion
+
+
+		#region (Get Post By Id)
+		public async Task<Post> GetPostById(int Id)
         {
             try
             {

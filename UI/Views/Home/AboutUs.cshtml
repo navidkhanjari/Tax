@@ -1,0 +1,52 @@
+﻿@model AboutUsDTO
+
+@{
+	ViewData["Title"] = "درباره ما";
+	ViewData["selected"] = "About-us";
+}
+@section Header {
+	@await Component.InvokeAsync("Header")
+}
+@section Footer {
+	@await Component.InvokeAsync("Footer")
+}
+
+
+<section class="banner_area">
+	<div class="container">
+		<h1 class="text-white IRANSans_Bold">درباره ما</h1>
+		<div class="breadcrumb_content">
+			<ul>
+				<li><a href="#">صفحه اصلی</a></li>
+				<li><a href="/About-us">درباره ما</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="container ">
+	<div class="row">
+
+		<div class="col-md-8 p-md-5 p-4 mb-3 ">
+			<div class="d-flex flex-row mb-3">
+				<div class="Dottedstocol ml-3"></div>
+				<div class="singletitle">
+					<span>درباره ما</span>
+					<h1 class="text-right">شرکت حسابداری دانا محاسبان نوین</h1>
+				</div>
+			</div>
+			<p class="mt-3 text-justify">
+				@Model.Description
+			</p>
+
+			<div class="mt-3">
+				<a class="btn btn-warning text-dark" href="/services"><i class="fal fa-download ml-2"></i>خدمات ما</a>
+				<a class="btn btn-dark" href="/contact-us"><i class="fal fa-phone ml-2"></i>تماس با ما</a>
+			</div>
+		</div>
+		<div class="col-md-4 mb-3 d-md-block d-none text-center">
+			<img src="@FilePath.AboutUsImagePath@Model.ImageName" />
+		</div>
+
+	</div>
+</section>

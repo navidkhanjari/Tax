@@ -1,0 +1,26 @@
+﻿@{
+	ViewData["Title"] = "خدمات ما";
+	ViewData["selected"] = "Services";
+}
+@section Header {
+	@await Component.InvokeAsync("Header")
+}
+@section Footer {
+	@await Component.InvokeAsync("Footer")
+}
+<section class="banner_area">
+	<div class="container">
+		<h1 class="text-white IRANSans_Bold">خدمات ما</h1>
+		<div class="breadcrumb_content">
+			<ul>
+				<li><a href="#">صفحه اصلی</a></li>
+				<li><a href="/Services">خدمات ما</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section class="container ">
+	<div class="row">
+		@await Component.InvokeAsync("Services")
+	</div>
+</section>
