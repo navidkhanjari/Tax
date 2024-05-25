@@ -4,12 +4,11 @@
 	ViewData["Title"] = "درباره ما";
 	ViewData["selected"] = "About-us";
 	var description = Model.Description.ToString();
-	var keywords = "";
+	var keywords = "مشاوره مالیاتی,خدمات مالی و حسابداری,اظهارنامه دفاتر قانونی,حسابداری,خدمات مالی,حسابداری مالی,اظهارنامه اشخاص حقیقی و حقوقی";
 }
 @section MetaTags {
 	<meta name="description" content="@description" />
 	<meta name="keywords" content="@keywords" />
-
 	<meta name="twitter:description" content="@description" />
 	<meta property="og:title" content="@ViewData["Title"]" />
 	<meta property="og:description" content="@description" />
@@ -27,8 +26,6 @@
 @section Footer {
 	@await Component.InvokeAsync("Footer")
 }
-
-
 <section class="banner_area">
 	<div class="container">
 		<h1 class="text-white IRANSans_Bold">درباره ما</h1>
@@ -43,7 +40,6 @@
 
 <section class="container ">
 	<div class="row">
-
 		<div class="col-md-8 p-md-5 p-4 mb-3 ">
 			<div class="d-flex flex-row mb-3">
 				<div class="Dottedstocol ml-3"></div>
@@ -64,6 +60,5 @@
 		<div class="col-md-4 mb-3 d-md-block d-none text-center">
 			<img src="@FilePath.AboutUsImagePath@Model.ImageName" />
 		</div>
-
 	</div>
 </section>

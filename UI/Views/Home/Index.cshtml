@@ -2,7 +2,7 @@
     ViewData["Title"] = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
     ViewData["selected"] = "Home";
     var description = "حسابداری مالی | مشاوره مالی | انجام امور مالی";
-    var keywords = "";
+    var keywords = "مشاوره مالیاتی,خدمات مالی و حسابداری,اظهارنامه دفاتر قانونی,حسابداری,خدمات مالی,حسابداری مالی,اظهارنامه اشخاص حقیقی و حقوقی";
 }
 @section MetaTags {
 
@@ -64,7 +64,7 @@
 <section class="container">
     <div class="row bg-warning  px-5 py-3 my-5 radius10">
         <div class="col-lg-9 text-dark  text-lg-right text-center">
-            <h5 class="IRANSans_Medium">"ما در کنار شما هستیم .. "</h5>
+            <h5 class="IRANSans_Medium">"انجام کلیه امور مالی و حسابرسی شرکت ها .. "</h5>
             <p>
                 مدیریت اصولی و حرفه‌ای امور مالی و حسابداری کسب و کارها نقش مهمی را در موفقیت و دستیابی به اهداف بلندمدت آنها ایفا می‌کند.
             </p>
@@ -75,10 +75,5 @@
     </div>
 </section>
 
-<h3 class="bt-center text-center IRANSans_Bold mb-4">نظرات مشتریان</h3>
 
-<section class="container mb-5">
-    <div class="row">
-        @await Component.InvokeAsync("Comments")
-    </div>
-</section>
+@await Component.InvokeAsync("Comments")
