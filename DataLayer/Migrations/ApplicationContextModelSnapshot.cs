@@ -51,6 +51,17 @@ namespace DataLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AboutUs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "درباره ما",
+                            MetaDescription = "meta",
+                            MetaTitle = "meta",
+                            TotalCustomer = "1",
+                            TotalDoneProject = "1"
+                        });
                 });
 
             modelBuilder.Entity("DataLayer.Entities.Comments.Comment", b =>
@@ -107,6 +118,17 @@ namespace DataLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ContactUs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "تماس با ما",
+                            Email = "Email.com",
+                            MetaDescription = "meta",
+                            MetaTitle = "meta",
+                            Number = "09"
+                        });
                 });
 
             modelBuilder.Entity("DataLayer.Entities.FAQ.FAQs", b =>
@@ -305,6 +327,32 @@ namespace DataLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "ساناز",
+                            LastName = "خانی",
+                            Password = "70-66-04-FE-12-0C-ED-D1-00-A2-F6-55-5E-3B-A8-9F",
+                            UserName = "SanazKhani"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "زهرا",
+                            LastName = "جنگجو",
+                            Password = "6C-6F-BB-1E-6A-47-DA-3A-4D-A4-77-3C-8E-41-07-8F",
+                            UserName = "ZahraJangjoo"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FirstName = "نوید",
+                            LastName = "خنجری",
+                            Password = "AC-D6-E1-0F-38-B8-CF-14-BE-F4-88-B6-51-5F-D1-0F",
+                            UserName = "navidkhanjari"
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -12,7 +12,9 @@ namespace CoreLayer.Utilities.Security
 			Byte[] EncodedBytes;
 
 			MD5 md5;
+#pragma warning disable SYSLIB0021 // Type or member is obsolete
 			md5 = new MD5CryptoServiceProvider();
+#pragma warning restore SYSLIB0021 // Type or member is obsolete
 
 			OriginalBytes = ASCIIEncoding.Default.GetBytes(Password);
 			EncodedBytes = md5.ComputeHash(OriginalBytes);

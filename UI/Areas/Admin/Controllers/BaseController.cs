@@ -1,11 +1,12 @@
 ﻿using CoreLayer.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace UI.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	//[Authorize]
+	[Authorize]
 	public class BaseController : Controller
 	{
 		#region (Sweet Alert)

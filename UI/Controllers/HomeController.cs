@@ -1,13 +1,13 @@
-﻿using DataLayer.Entities.Users;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using CoreLayer.Services.Interfaces;
-using CoreLayer.DTOs.User;
+﻿using CoreLayer.DTOs.AboutUs;
 using CoreLayer.DTOs.ContactUs;
 using CoreLayer.DTOs.Messages;
-using CoreLayer.DTOs.AboutUs;
+using CoreLayer.DTOs.User;
+using CoreLayer.Services.Interfaces;
+using DataLayer.Entities.Users;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace UI.Controllers
 {
@@ -87,7 +87,7 @@ namespace UI.Controllers
 					return Redirect(this.ReturnUrl);
 				}
 
-				return RedirectToAction("Admin");
+				return RedirectToAction("Index", "Admin");
 			}
 
 			ModelState.AddModelError("UserName", "نام کاربری یا کلمه عبور اشتباه است!");
