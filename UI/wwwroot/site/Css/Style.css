@@ -536,7 +536,7 @@ object-fit: cover;
     z-index: 1;
     overflow: hidden;*/
     padding: 170px 0px 40px;
-    background: rgba(0, 0, 0, 0.5) url('../Img/packageBg.jpg') no-repeat center;
+    background: rgba(0, 0, 0, 0.5) url('../Img/banner.jpg') no-repeat center;
     /*transform: translateY(-9.5px);*/
     text-align: center;
 }
@@ -847,7 +847,7 @@ img.blogimg {
 
 
 .banner-bui {
-    background: url('../Img/other-pic3.jpg') no-repeat scroll 0% 0%;
+    background: url('../Img/other-pic4.jpg') no-repeat scroll 0% 0%;
     position: relative;
     background-attachment: fixed;
     background-position: center;
