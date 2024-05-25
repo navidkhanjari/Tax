@@ -1,0 +1,32 @@
+﻿@model CoreLayer.DTOs.Messages.CreateMessageDTO
+<body>
+    <div style="margin-top: 50px;">
+        <table cellpadding="0" cellspacing="0" style="direction: rtl; text-align: right; font-family: inherit; font-size: 15px; font-weight: 400; max-width: 600px; border: none; margin: 0 auto; border-radius: 6px; overflow: hidden; background-color: #fff; box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);">
+            <thead>
+                <tr style="background-color: #2f55d4; padding: 3px 0; line-height: 68px; text-align: center; color: #fff; font-size: 24px; font-weight: 700; letter-spacing: 1px;">
+                    <th scope="col">دانا محاسبان نوین | پیام جدید دریافت شد</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td style="padding: 48px 24px 0; color: #161c2d; font-size: 18px; font-weight: 600;">
+                        سلام یک پیام جدید از @Model.FullName دریافت شد!
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 24px 15px; color: #8492a6;">
+                        <h1>شرح  پیام:</h1><hr />
+                        @Model.Description
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 15px 24px 0; color: #8492a6;">
+                        جهت مشاهده شرح کلی پیام وارد حساب کاربری خود شوید
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>

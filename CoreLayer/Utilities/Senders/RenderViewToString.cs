@@ -16,13 +16,13 @@ namespace CoreLayer.Utilities.Senders
 	{
 		string RenderToStringAsync(string viewName, object model);
 	}
-	public class RenderViewToString : IViewRenderService
+	public class ViewRenderService : IViewRenderService
 	{
 		private readonly IRazorViewEngine _razorViewEngine;
 		private readonly ITempDataProvider _tempDataProvider;
 		private readonly IServiceProvider _serviceProvider;
 
-		public RenderViewToString(IRazorViewEngine razorViewEngine,
+		public ViewRenderService(IRazorViewEngine razorViewEngine,
 			ITempDataProvider tempDataProvider,
 			IServiceProvider serviceProvider)
 		{
