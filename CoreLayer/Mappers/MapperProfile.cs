@@ -25,7 +25,7 @@ namespace CoreLayer.Mappers
 			CreateMap<AboutUs, AboutUsDTO>().ReverseMap();
 			CreateMap<AboutUs, UpdateAboutUsDTO>().ReverseMap();
 
-			CreateMap<ContactUs, UpdateContactUsDTO>();
+			CreateMap<ContactUs, UpdateContactUsDTO>().ReverseMap();
 			CreateMap<ContactUs, ContactUsDTO>().ReverseMap();
 
 			CreateMap<Comment, CommentsDTO>().ReverseMap();
