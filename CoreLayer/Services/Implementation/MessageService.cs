@@ -6,6 +6,7 @@ using DataLayer.Entities.Messages;
 using Microsoft.EntityFrameworkCore;
 using DataLayer.Context;
 using System.Reflection;
+using CoreLayer.Utilities.Security;
 
 namespace CoreLayer.Services.Implementation
 {
@@ -106,8 +107,13 @@ namespace CoreLayer.Services.Implementation
         {
             try
             {
+                
                 Message Message = _Mapper.Map<Message>(CreateMessageDTO);
 
+                Message.Number.SanitizeText();
+                Message.Description.SanitizeText();
+                Message.Email.SanitizeText();
+                Message.FullName.SanitizeText();
                 Message.CreateDate = DateTime.Now;
 
                 await Add(Message);

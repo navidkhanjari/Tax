@@ -1,6 +1,6 @@
 ﻿@model List<PostDTO>
 
-@if (Model != null)
+@if (Model != null && Model.Count > 1)
 {
     <div id="owl-blog" class="owl-carousel owl-theme text-right">
         @foreach (var Post in Model)

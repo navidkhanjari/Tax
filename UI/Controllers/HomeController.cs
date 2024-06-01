@@ -115,6 +115,7 @@ namespace UI.Controllers
         [HttpPost("contact-us")]
         public async Task<IActionResult> ContactUs(CreateMessageDTO CreateMessageDTO)
         {
+            
             CreateMessageResult Result = await _MessageService.CreateMessage(CreateMessageDTO);
 
             switch (Result)
@@ -125,7 +126,8 @@ namespace UI.Controllers
                     // Send Email To Admin
                     string bodyEmail = _ViewRenderService.RenderToStringAsync("_MessageRecive", CreateMessageDTO);
 
-                    SendEmail.Send("danamohasebannovin@yahoo.com", "پیام جدید", bodyEmail);
+                    //SendEmail.Send("danamohasebannovin@yahoo.com", "پیام جدید", bodyEmail);
+                    SendEmail.Send("tirekhaloo@gmail.com", "پیام جدید", bodyEmail);
 
                     break;
                 case CreateMessageResult.Error:

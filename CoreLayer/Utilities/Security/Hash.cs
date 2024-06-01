@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CoreLayer.Utilities.Security
 {
-	public class Hash
+    public class Hash
 	{
 		#region (Encode To Md5)
 		public static string EncodeToMd5(string Password)
