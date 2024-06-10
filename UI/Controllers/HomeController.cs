@@ -123,10 +123,9 @@ namespace UI.Controllers
                 case CreateMessageResult.Success:
                     SuccessAlert("پیام شما ارسال شد");
 
-                    // Send Email To Admin
                     string bodyEmail = _ViewRenderService.RenderToStringAsync("_MessageRecive", CreateMessageDTO);
 
-                    //SendEmail.Send("danamohasebannovin@yahoo.com", "پیام جدید", bodyEmail);
+                    SendEmail.Send("danamohasebannovin@yahoo.com", "پیام جدید", bodyEmail);
                     SendEmail.Send("tirekhaloo@gmail.com", "پیام جدید", bodyEmail);
 
                     break;

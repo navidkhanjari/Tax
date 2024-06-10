@@ -3,8 +3,9 @@
 @{
 	ViewData["Title"] = "جزئیات مقاله";
 	ViewData["selected"] = "Blog";
-	var description = Model.MetaDescription;
-	var title = Model.MetaTitle;
+	var description = Model.MetaDescription ?? "";
+	var title = Model.MetaTitle ?? "";
+
 }
 @section MetaTags {
 	<meta name="robots" content="index, follow" />
@@ -59,7 +60,7 @@
 				<div class="thumb-post mb-4">
 					<h2 class="bg-warning text-white  py-2 px-4 my-2 bright radius10 IRANSans_Medium">آخرین مطالب</h2>
 					<ul class="fa12 p-3">
-				@await Component.InvokeAsync("LatestPost")
+						@await Component.InvokeAsync("LatestPost")
 					</ul>
 				</div>
 			</div>
@@ -86,16 +87,6 @@
 
 							<img src="@FilePath.PostImagePath@Model.ImageName" alt="@Model.Title" class="img-fluid mb-4  radius15" width="700" height="600">
 							@Html.Raw(Model.Description)
-						</div>
-					</div>
-
-
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="float-left">
-								<a class="btn bg-light py-1 px-4 m-1 fa12 radius25" href="#"><i class="fal fa-share"></i></a>
-								<a class="btn bg-light py-1 px-4 m-1 fa12 radius25" href="#"><i class="fal fa-share-alt"></i></a>
-							</div>
 						</div>
 					</div>
 				</div>

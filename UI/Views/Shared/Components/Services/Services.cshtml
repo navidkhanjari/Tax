@@ -1,72 +1,193 @@
 ﻿@model List<ServiceDTO>
 
 <div class="col-lg-12 col-md-12 p-3 mt-4 d2-service">
-    <div class="d-flex flex-row mb-3">
-        <div class="Dottedstocol ml-3"></div>
-        <div class="singletitle">
-            <span>خدمات ما</span>
-            <h1 class="text-right">معرفی خدمات ما </h1>
-        </div>
-    </div>
-    <p class="text-justify mb-3">
-    </p>
-    @if (Model != null)
-    {
-        @if (Model.Count == 3)
-        {
-            <div class="d-flex flex-row">
-                @foreach (var Service in Model)
-                {
-                    <div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
-                        <img src="@FilePath.ServiceImagePath@Service.IconName" width="45" height="45" class="m-3" />
-                        <div>
-                            <h2>@Service.Title</h2>
-                            <p>@Service.Description</p>
-                        </div>
-                    </div>
-                }
-            </div>
-        }
-        else if (Model.Count == 6)
-        {
-            <div class="d-flex flex-row">
-                @for (int Index = 0; Index <= 1; Index++)
-                {
-                    <div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
-                        <img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
-                        <div>
-                            <h2>@Model[Index].Title</h2>
-                            <p>@Model[Index].Description</p>
-                        </div>
-                    </div>
-                }
-            </div>
+	<div class="d-flex flex-row mb-3">
+		<div class="Dottedstocol ml-3"></div>
+		<div class="singletitle">
+			<span>خدمات ما</span>
+			<h1 class="text-right">معرفی خدمات ما </h1>
+		</div>
+	</div>
+	<p class="text-justify mb-3">
+	</p>
+	@if (Model != null)
+	{
+		@if (Model.Count == 3)
+		{
+			<div class="d-flex flex-row">
+				@foreach (var Service in Model)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Service.IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Service.Title</h2>
+							<p>@Service.Description</p>
+						</div>
+					</div>
+				}
+			</div>
+		}
+		else if (Model.Count == 6)
+		{
+			<div class="d-flex flex-row">
+				@for (int Index = 0; Index <= 1; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
 
-            <div class="d-flex flex-row">
-                @for (int Index = 2; Index <= 3; Index++)
-                {
-                    <div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
-                        <img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
-                        <div>
-                            <h2>@Model[Index].Title</h2>
-                            <p>@Model[Index].Description</p>
-                        </div>
-                    </div>
-                }
-            </div>
+			<div class="d-flex flex-row">
+				@for (int Index = 2; Index <= 3; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
 
-            <div class="d-flex flex-row">
-                @for (int Index = 4; Index <= 5; Index++)
-                {
-                    <div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
-                        <img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
-                        <div>
-                            <h2>@Model[Index].Title</h2>
-                            <p>@Model[Index].Description</p>
-                        </div>
-                    </div>
-                }
-            </div>
-        }
-    }
+			<div class="d-flex flex-row">
+				@for (int Index = 4; Index <= 5; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+		}
+		else if (Model.Count == 8)
+		{
+			<div class="d-flex flex-row">
+				@for (int Index = 0; Index <= 1; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 2; Index <= 3; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 4; Index <= 5; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 6; Index <= 7; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+		}
+		else if (Model.Count == 10)
+		{
+			<div class="d-flex flex-row">
+				@for (int Index = 0; Index <= 1; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 2; Index <= 3; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 4; Index <= 5; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 6; Index <= 7; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="d-flex flex-row">
+				@for (int Index = 8; Index <= 9; Index++)
+				{
+					<div class="d-flex flex-lg-row flex-column text-md-right text-center p-3">
+						<img src="@FilePath.ServiceImagePath@Model[Index].IconName" width="45" height="45" class="m-3" />
+						<div>
+							<h2>@Model[Index].Title</h2>
+							<p>@Model[Index].Description</p>
+						</div>
+					</div>
+				}
+			</div>
+		}
+	}
 </div>

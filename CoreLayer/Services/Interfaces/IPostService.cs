@@ -22,5 +22,7 @@ namespace CoreLayer.Services.Interfaces
 
         Task<CreatePostResult> CreatePost(CreatePostDTO CreatePostDTO);
         Task<UpdatePostResult> UpdatePost(UpdatePostDTO UpdatePostDTO);
+
+        Task<bool> IncreaseVisit(string Slug);
     }
 }
